@@ -1,0 +1,113 @@
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author neon
+ */
+
+class StudentPrimerjajPoImenu implements java.util.Comparator<Studenti>
+{
+    @Override
+    public int compare(Studenti o1, Studenti o2)
+    {
+        String ime1 = o1.getPriimek() + ", " + o1.getIme();
+        String ime2 = o2.getPriimek() + ", " + o2.getIme();
+        return ime1.compareToIgnoreCase(ime2);
+    }
+}
+
+public class Studenti<Tip extends Comparable>  {
+    protected String ime;
+    protected String priimek;
+    protected int ID;
+    protected float povpOcena;
+    
+    public Studenti()  {
+    }
+
+    public Studenti(String ime, String priimek, int vpisnaStevilka, float povpOcena)
+    {
+        this.ime = ime;
+        this.priimek = priimek;
+        this.ID = vpisnaStevilka;
+        this.povpOcena = povpOcena;
+    }
+    
+    public String getIme()
+    {
+        return ime;
+    }
+
+    public void setIme(String ime)
+    {
+        this.ime = ime;
+    }
+
+    public String getPriimek()
+    {
+        return priimek;
+    }
+
+    public void setPriimek(String priimek)
+    {
+        this.priimek = priimek;
+    }
+
+    public int getID()
+    {
+        return ID;
+    }
+
+    public void setID(int ID)
+    {
+        this.ID = ID;
+    }
+    
+    public float getAvgGrade()
+    {
+        return povpOcena;
+    }
+
+    public void setAvgGrade(float avgGrade)
+    {
+        this.povpOcena = avgGrade;
+    }
+    
+    @Override
+    public String toString()
+    {
+        return priimek + ", " + ime + " - " + ID;
+    }
+    
+    public static void main(String[] args) {
+        SeznamiUV seznamiUV = new SeznamiUV();
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String input;
+        String output;
+        try{
+            do{   
+                System.out.print("command>");
+                input = br.readLine();
+                output = seznamiUV.processInput(input);
+                System.out.println(output);
+            }
+            while (!input.equalsIgnoreCase("exit"));
+        }
+        catch (IOException e){
+            System.err.println("Failed to retrieve the next command.");
+            System.exit(1);
+        }
+    }
+}
+
+    
+    
