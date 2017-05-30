@@ -14,6 +14,7 @@ import org.junit.*;
  */
 public class Drevo23Test {
     Drevo23<Integer> dv;
+    Drevo23<Prijatelj> pr;
     //Drevo23<Studenti> st; figure this out
     
     @Before

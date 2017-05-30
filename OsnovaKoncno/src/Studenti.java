@@ -14,16 +14,6 @@ import java.io.InputStreamReader;
  * @author neon
  */
 
-class StudentPrimerjajPoImenu implements java.util.Comparator<Studenti>
-{
-    @Override
-    public int compare(Studenti o1, Studenti o2)
-    {
-        String ime1 = o1.getPriimek() + ", " + o1.getIme();
-        String ime2 = o2.getPriimek() + ", " + o2.getIme();
-        return ime1.compareToIgnoreCase(ime2);
-    }
-}
 
 public class Studenti<Tip extends Comparable>  {
     protected String ime;

@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
  
@@ -16,6 +17,18 @@ import java.util.List;
  *
  * @author primoz
  */
+
+class StudentPrimerjajPoImenu implements java.util.Comparator<Studenti>
+{
+    @Override
+    public int compare(Studenti o1, Studenti o2)
+    {
+        String ime1 = o1.getPriimek() + ", " + o1.getIme();
+        String ime2 = o2.getPriimek() + ", " + o2.getIme();
+        return ime1.compareToIgnoreCase(ime2);
+    }
+}
+
 public class Drevo23 <Tip extends Comparable> implements Seznam<Tip>{
 
     @Override
@@ -48,14 +61,16 @@ public class Drevo23 <Tip extends Comparable> implements Seznam<Tip>{
             left_child = null;
             mid_child = null;
             right_child = null;
+            
         }
     }
-    
+    public Comparator<Tip> comparator;
     Node23 root_node;
-
-    public Drevo23() {
-        this.root_node = null;
-    }
+        public Drevo23(Comparator<Tip> comparator){
+            this.comparator = comparator;
+            this.root_node = null;
+        }
+    
     public Node23 get_root_node(){
         return this.root_node;
     }
