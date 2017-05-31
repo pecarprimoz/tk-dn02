@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="DESKTOP-Q8TJ42S" name="SeznamiUVTest" skipped="0" tests="13" time="0.179" timestamp="2017-05-31T17:13:16">
+<testsuite errors="0" failures="0" hostname="DESKTOP-Q8TJ42S" name="BstTest" skipped="0" tests="8" time="0.088" timestamp="2017-05-31T17:13:15">
   <properties>
     <property name="netbeans.autoupdate.country" value="US" />
     <property name="javac.test.classpath" value=":build/classes:C:\Program Files\NetBeans 8.1\platform\modules\ext\junit-4.12.jar:C:\Program Files\NetBeans 8.1\platform\modules\ext\hamcrest-core-1.3.jar" />
@@ -37,7 +37,7 @@
     <property name="user.name" value="neon" />
     <property name="copylibs.rebase" value="true" />
     <property name="libs.swing-layout.maven-pom" value="" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner SeznamiUVTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Users\neon\Documents\NetBeansProjects\OsnovaKoncno\build\test\results\TEST-SeznamiUVTest.xml crashfile=C:\Users\neon\Documents\NetBeansProjects\OsnovaKoncno\build\junitvmwatcher1762660557553094739.properties propsfile=C:\Users\neon\Documents\NetBeansProjects\OsnovaKoncno\build\junit6554076319982703751.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner BstTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Users\neon\Documents\NetBeansProjects\OsnovaKoncno\build\test\results\TEST-BstTest.xml crashfile=C:\Users\neon\Documents\NetBeansProjects\OsnovaKoncno\build\junitvmwatcher2417859157158779101.properties propsfile=C:\Users\neon\Documents\NetBeansProjects\OsnovaKoncno\build\junit6710281094535085833.properties" />
     <property name="build.classes.dir" value="build/classes" />
     <property name="netbeans.accept_license_class" value="org.netbeans.license.AcceptLicense" />
     <property name="jnlp.descriptor" value="application" />
@@ -308,21 +308,14 @@
     <property name="platform.active" value="default_platform" />
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit" />
   </properties>
-  <testcase classname="SeznamiUVTest" name="testUseAllMixed" time="0.006" />
-  <testcase classname="SeznamiUVTest" name="testBothReset" time="0.001" />
-  <testcase classname="SeznamiUVTest" name="testBothSave" time="0.013" />
-  <testcase classname="SeznamiUVTest" name="testBothRemove" time="0.001" />
-  <testcase classname="SeznamiUVTest" name="testBothRestore" time="0.053" />
-  <testcase classname="SeznamiUVTest" name="testBothRemoveFirst" time="0.0" />
-  <testcase classname="SeznamiUVTest" name="testBothAdd" time="0.0" />
-  <testcase classname="SeznamiUVTest" name="testUseSklad" time="0.0" />
-  <testcase classname="SeznamiUVTest" name="testAddMemoryFullMock" time="0.005" />
-  <testcase classname="SeznamiUVTest" name="testSystem" time="0.0" />
-  <testcase classname="SeznamiUVTest" name="testUseAll" time="0.001" />
-  <testcase classname="SeznamiUVTest" name="testUseBST" time="0.001" />
-  <testcase classname="SeznamiUVTest" name="testUsePrioritetnaVrsta" time="0.001" />
-  <system-out><![CDATA[Novak, Andrej - 013456789
-	Levak, Janez - 012345678
-]]></system-out>
+  <testcase classname="BstTest" name="testGetOnEmpty" time="0.006" />
+  <testcase classname="BstTest" name="testRemoveMultipleScenario2" time="0.004" />
+  <testcase classname="BstTest" name="testAddOne" time="0.0" />
+  <testcase classname="BstTest" name="testExists" time="0.0" />
+  <testcase classname="BstTest" name="testGetOne" time="0.0" />
+  <testcase classname="BstTest" name="testDepthOnEmpty" time="0.0" />
+  <testcase classname="BstTest" name="testIsEmpty" time="0.001" />
+  <testcase classname="BstTest" name="testGetMultiple" time="0.001" />
+  <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

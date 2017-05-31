@@ -14,12 +14,11 @@ import org.junit.*;
  */
 public class Drevo23Test {
     Drevo23<Integer> dv;
-    Drevo23<Prijatelj> pr;
     //Drevo23<Studenti> st; figure this out
     
     @Before
     public void setUp() {
-        dv = new Drevo23<>();
+        dv = new Drevo23<Integer>(new PrimerjajPoTipu<Integer>());
     }
     
     @Test

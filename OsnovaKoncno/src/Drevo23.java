@@ -29,6 +29,16 @@ class StudentPrimerjajPoImenu implements java.util.Comparator<Studenti>
     }
 }
 
+class PrimerjajPoTipu <Tip extends Comparable>  implements java.util.Comparator<Tip>
+{
+    @Override
+    public int compare(Tip o1, Tip o2)
+    {
+        return o1.compareTo(o2);
+    }
+}
+
+
 public class Drevo23 <Tip extends Comparable> implements Seznam<Tip>{
 
     @Override
@@ -81,11 +91,12 @@ public class Drevo23 <Tip extends Comparable> implements Seznam<Tip>{
         //v primeru da imamo zgoraj null lahko samo dodamo, v primeru da nimamo
         //moramo narediti split, podobno kot spodaj
         if(this.root_node.right==null){
-            if(this.root_node.left.compareTo(e)>0){
+            if(comparator.compare(this.root_node.left, e)>0){
                 this.root_node.right=this.root_node.left;
                 this.root_node.left=e;
             }
-            else if(this.root_node.left.compareTo(e)<0){
+
+            else if(comparator.compare(this.root_node.left,e)<0){
                 this.root_node.right=e;
             }
         }
@@ -93,7 +104,8 @@ public class Drevo23 <Tip extends Comparable> implements Seznam<Tip>{
     public Node23 split(Tip e){
         Node23 tmp = this.root_node.parent;
         Node23 upper_root = null;
-            if(e.compareTo(tmp.left)>0 && e.compareTo(tmp.right)<0){
+        
+            if(comparator.compare(e, tmp.left)>0 && comparator.compare(e, tmp.right)<0){
                 /*
                 19, 4, 20, 17, 12, 15, 13
                 
@@ -132,7 +144,8 @@ public class Drevo23 <Tip extends Comparable> implements Seznam<Tip>{
                 //glej vizualizacijo za 19,4,20,17,12,15,13
             }
             //POMENI DA JE NOVI ELEMENT VEČJI OD DESNEGA V ROOT-U, KOT MEDIANO VZAMEMO TOREJ DESNEGA
-            else if(e.compareTo(tmp.right)>0){
+            
+            else if(comparator.compare(e, tmp.right)>0){
                 /*
                 10, 4, 15, 16, 17, 18, 18
                 
@@ -168,7 +181,8 @@ public class Drevo23 <Tip extends Comparable> implements Seznam<Tip>{
                 upper_root.right_child=new_right_child;
                 
             }
-            else if(e.compareTo(tmp.left)<0){
+            
+            else if(comparator.compare(e, tmp.left)<0){
                 //Nastavimo nova vozlišča
                 upper_root= new Node23(tmp.left);
                 Node23 new_left_child=new Node23(e);
@@ -205,19 +219,18 @@ public class Drevo23 <Tip extends Comparable> implements Seznam<Tip>{
         }
         boolean isSet=isLeaf();
         
-        
-        if(this.root_node.left!=null && e.compareTo(this.root_node.left)==0 ||
-           this.root_node.right!=null && e.compareTo(this.root_node.right)==0){
+        if(this.root_node.left!=null && comparator.compare(e, this.root_node.left)==0 ||
+           this.root_node.right!=null && comparator.compare(e, this.root_node.right)==0){
             throw new java.lang.IllegalArgumentException();
         }
         
         
         if(isSet && this.root_node.right==null){
-            if(this.root_node.left.compareTo(e)>0){
+            if(comparator.compare(this.root_node.left, e)>0){
                 this.root_node.right=this.root_node.left;
                 this.root_node.left=e;
             }
-            else if(this.root_node.left.compareTo(e)<0){
+            else if(comparator.compare(this.root_node.left, e)<0){
                 this.root_node.right=e;
             }
             
@@ -227,14 +240,14 @@ public class Drevo23 <Tip extends Comparable> implements Seznam<Tip>{
             //najprej je potrebno najti mediano med temi tremi, torej srednji element    
             //sredinski split, LEFT ostane kot left v left child
             if(this.root_node.parent!=null){
-                if(this.root_node.parent.right!=null)
-                if(e.compareTo(this.root_node.right)>0){
+                if(this.root_node.parent.right!=null) 
+                if(comparator.compare(e, this.root_node.right)>0){
                     Tip tmp = this.root_node.right;
                     this.root_node.right=e;
                     this.root_node=split(tmp);
                     return;
                 }
-                else if(e.compareTo(this.root_node.right)<0 && e.compareTo(this.root_node.left)>0){
+                else if(comparator.compare(e, this.root_node.right)<0 && comparator.compare(e, this.root_node.left)>0){
                     this.root_node=split(e);
                     return;
                 }
@@ -247,7 +260,7 @@ public class Drevo23 <Tip extends Comparable> implements Seznam<Tip>{
                 }
             }
             
-            if(e.compareTo(this.root_node.right)>0){
+            if(comparator.compare(e, this.root_node.right)>0){
                 Tip medi = this.root_node.right;
                 if(this.root_node.parent!=null){
                     Node23 tmp = this.root_node;
@@ -270,7 +283,8 @@ public class Drevo23 <Tip extends Comparable> implements Seznam<Tip>{
                 
                 //pomeni da je nov element večji od right
             }
-            else if(this.root_node.left.compareTo(e)>0 ){
+            
+            else if(comparator.compare(this.root_node.left, e)>0 ){
                 Tip medi = this.root_node.left;
                 if(this.root_node.parent!=null){
                     Node23 tmp = this.root_node;
@@ -317,7 +331,7 @@ public class Drevo23 <Tip extends Comparable> implements Seznam<Tip>{
             */
             
             if(this.root_node.left!=null && isSet){
-                int compareLeft = e.compareTo(this.root_node.left);
+                int compareLeft = comparator.compare(e,this.root_node.left);
                 if(compareLeft<0){
                     Tip tmp = this.root_node.right;
                     this.root_node.left_child = new Node23(e);
@@ -359,7 +373,7 @@ public class Drevo23 <Tip extends Comparable> implements Seznam<Tip>{
             }*/
             
             
-            if(e.compareTo(this.root_node.left)<0){
+            if(comparator.compare(e, this.root_node.left)<0){
                 Node23 temporary_center = this.root_node;
                 this.root_node=this.root_node.left_child;
                 add(e);
@@ -374,7 +388,8 @@ public class Drevo23 <Tip extends Comparable> implements Seznam<Tip>{
                 return;
             }
             if(this.root_node.right==null){
-                if(e.compareTo(this.root_node.left)>0){
+                
+                if(comparator.compare(e, this.root_node.left)>0){
                     Node23 temporary_center = this.root_node;
                     this.root_node=this.root_node.right_child;
                     add(e);
@@ -385,7 +400,7 @@ public class Drevo23 <Tip extends Comparable> implements Seznam<Tip>{
                     return;
                 }
             }
-            else if(e.compareTo(this.root_node.right)<0){
+            else if(comparator.compare(e, this.root_node.right)<0){
                 Node23 temporary_center = this.root_node;
                     this.root_node=this.root_node.mid_child;
                     add(e);
@@ -399,7 +414,8 @@ public class Drevo23 <Tip extends Comparable> implements Seznam<Tip>{
                     return;
                 
             }
-            else if(e.compareTo(this.root_node.right)>0){
+            
+            else if(comparator.compare(e, this.root_node.right)>0){
                 Node23 temporary_center = this.root_node;
                     this.root_node=this.root_node.right_child;
                     add(e);
@@ -507,7 +523,7 @@ public class Drevo23 <Tip extends Comparable> implements Seznam<Tip>{
         if(!exists(e) || this.root_node==null){
             throw new java.lang.IllegalArgumentException();
         }
-        if(this.root_node.left.compareTo(e)==0){
+        if(comparator.compare(this.root_node.left,e)==0){
             if(this.root_node.right==null){
                 t = this.root_node.left;
                 this.root_node.left=null;
@@ -534,14 +550,16 @@ public class Drevo23 <Tip extends Comparable> implements Seznam<Tip>{
             }
         }
         if(this.root_node.right!=null){
-            if(this.root_node.right.compareTo(e)==0){
+            
+            if(comparator.compare(this.root_node.right,e)==0){
                 t = this.root_node.right;
                 this.root_node.right=null;
                 return t;
             }
         }
         //e je manjsi od levega, gremo v levo vejo
-        if(this.root_node.left.compareTo(e)>0){
+        
+        if(comparator.compare(this.root_node.left,e)>0){
             if(this.root_node.left_child!=null){
                 this.root_node=this.root_node.left_child;
                 t=remove(e);
@@ -554,11 +572,12 @@ public class Drevo23 <Tip extends Comparable> implements Seznam<Tip>{
             }
         }
         //e je vecji od levega, preverimo ce mamo mid, ce nimamo gremo v desno vejo
-        else if(this.root_node.left.compareTo(e)<0){
+        else if(comparator.compare(this.root_node.left, e)<0){
             //v primeru da obsaja srednji otrok, da desni otrok ni null in da je e manjsi od desnega
             //se moramo spustiti v srednjega otroka
             if(this.root_node.mid_child!=null && this.root_node.right_child!=null 
-                    && this.root_node.right_child.left.compareTo(e)>0){
+                    
+                    && comparator.compare(this.root_node.right_child.left, e)>0){
                 this.root_node=this.root_node.mid_child;
                 t=remove(e);
                 this.root_node=orig;
@@ -627,12 +646,13 @@ public class Drevo23 <Tip extends Comparable> implements Seznam<Tip>{
         if(this.root_node==null){
             return false;
         }
-        if(this.root_node.left.compareTo(e)==0){
+        
+        if(comparator.compare(this.root_node.left, e)==0){
             this.root_node=org;
             return true;
         }
         else if(this.root_node.right!=null){
-            if(this.root_node.right.compareTo(e)==0){
+            if(comparator.compare(this.root_node.right, e)==0){
                 this.root_node=org;
                 return true;
             }
