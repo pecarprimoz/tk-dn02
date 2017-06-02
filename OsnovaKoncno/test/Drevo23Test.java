@@ -710,13 +710,34 @@ public class Drevo23Test {
         dv.add(1);
         dv.add(2);
         dv.add(3);
-        dv.reset(5);
-        assertEquals(5,(int) dv.getFirst());
+        dv.reset();
+        assertEquals(null, dv.getFirst());
     }
     @Test
     public void testAddStudent(){
         st.add(new Studenti("B", "A", "63150213", 7.3));
         st.add(new Studenti("A", "A", "63150211", 7.7));
+    }
+    @Test
+    public void testSeachStudentByName(){
+        st.add(new Studenti("B", "A", "63150213", 7.3));
+        st.add(new Studenti("A", "A", "63150211", 7.7));
+        assertEquals("A, B - 63150213",st.search(new Studenti("B","A","",0.0)).toString());
+    }
+    @Test
+    public void testSeachStudentByID(){
+        st.add(new Studenti("B", "A", "63150213", 7.3));
+        st.add(new Studenti("A", "A", "63150211", 7.7));
+        assertEquals("A, B - 63150213",st.search(new Studenti("","","63150213",0.0)).toString());
+    }
+    @Test
+    public void testSeachStudentByIDMultiple(){
+        st.add(new Studenti("B", "A", "63150213", 7.3));
+        st.add(new Studenti("A", "A", "63150211", 7.7));
+        st.add(new Studenti("A", "C", "63150210", 7.7));
+        st.add(new Studenti("A", "D", "63150209", 7.7));
+        st.add(new Studenti("A", "F", "63150208", 7.7));
+        assertEquals("F, A - 63150208",st.search(new Studenti("","","63150208",0.0)).toString());
     }
     
 }

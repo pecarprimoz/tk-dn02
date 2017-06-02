@@ -65,4 +65,28 @@ public class SeznamiUVTest {
         assertEquals("OK", uv.processInput("add 62 A E 3.3"));
         assertEquals("OK", uv.processInput("add 61 A F 3.3"));
     }
+    @Test
+    public void testRemoveOne(){
+        assertEquals("OK", uv.processInput("add 6 A B 3.3"));
+        assertEquals("B, A - 6", uv.processInput("remove 6"));
+    }
+    @Test
+    public void testRemoveSecondOne(){
+        assertEquals("OK", uv.processInput("add 6 A B 3.3"));
+        assertEquals("OK", uv.processInput("add 7 C C 3.4"));
+        assertEquals("C, C - 7", uv.processInput("remove 7"));
+    }
+    @Test
+    public void testRemoveRandomElem(){
+        assertEquals("OK", uv.processInput("add 66 A A 3.3"));
+        assertEquals("OK", uv.processInput("add 65 A B 3.3"));
+        assertEquals("OK", uv.processInput("add 64 A C 3.3"));
+        assertEquals("OK", uv.processInput("add 63 A D 3.3"));
+        assertEquals("OK", uv.processInput("add 62 A E 3.3"));
+        assertEquals("OK", uv.processInput("add 61 A F 3.3"));
+        assertEquals("D, A - 63", uv.processInput("remove 63"));
+    }
+    
+    
+    
 }

@@ -1,6 +1,8 @@
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -69,13 +71,17 @@ public class Drevo23<Tip> implements Seznam<Tip>{
 
     @Override
     public void save(OutputStream outputStream) throws IOException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ObjectOutputStream out = new ObjectOutputStream(outputStream);
+        out.writeInt(this.size());
+        if(this.root_node!=null){
+            out.writeObject(this.root_node);
+        }
+        else{
+            System.out.println("The data structure is empty, nothing to save.");
+        }
+        
     }
 
-    @Override
-    public void restore(InputStream inputStream) throws IOException, ClassNotFoundException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
     class Node23{
         public Node23 parent;
@@ -105,6 +111,19 @@ public class Drevo23<Tip> implements Seznam<Tip>{
     public boolean isLeaf(){
         return this.root_node.left_child==null && this.root_node.mid_child==null && this.root_node.right_child==null;
     }
+    
+    @Override
+    public void restore(InputStream inputStream) throws IOException, ClassNotFoundException {
+        ObjectInputStream in = new ObjectInputStream(inputStream);
+        int count = in.readInt();
+        if(count==0){
+            System.out.println("Nothing to read.");
+        }
+        else{
+            this.root_node=(Node23)in.readObject();
+        }
+    }
+    
     public void addUpper(Tip e){
         //v primeru da imamo zgoraj null lahko samo dodamo, v primeru da nimamo
         //moramo narediti split, podobno kot spodaj
@@ -527,8 +546,8 @@ public class Drevo23<Tip> implements Seznam<Tip>{
     public boolean isEmpty() {
         return this.root_node==null;
     }
-    public void reset(Tip e){
-        this.root_node=new Node23(e);
+    public void reset(){
+        this.root_node=null;
     }
 
     @Override
@@ -703,6 +722,57 @@ public class Drevo23<Tip> implements Seznam<Tip>{
         }
         this.root_node=org;
         return false;
+    }
+    
+    public Tip search(Tip e) {
+        Node23 org = this.root_node;
+        Tip holdme=null;
+        if(this.root_node==null){
+            return null;
+        }
+        
+        if(comparator.compare(this.root_node.left, e)==0){
+            this.root_node=org;
+            return this.root_node.left;
+        }
+        else if(this.root_node.right!=null){
+            if(comparator.compare(this.root_node.right, e)==0){
+                this.root_node=org;
+                return this.root_node.right;
+            }
+        }
+        if(this.root_node.left_child!=null){
+            Node23 tmp = this.root_node;
+            this.root_node=this.root_node.left_child;
+            if(exists(e)){
+                holdme = search(e);
+                this.root_node=org;
+                
+            }
+            this.root_node=tmp;
+        }
+        if(this.root_node.right_child!=null){
+            Node23 tmp = this.root_node;
+            this.root_node=this.root_node.right_child;
+            if(exists(e)){
+                holdme = search(e);
+                this.root_node=org;
+            }
+            this.root_node=tmp;
+        }
+        if(this.root_node.mid_child!=null){
+            Node23 tmp = this.root_node;
+            this.root_node=this.root_node.mid_child;
+            if(exists(e)){
+                holdme = search(e);
+                this.root_node=org;
+            }
+        }
+        this.root_node=org;
+        if(holdme!=null){
+            return holdme;
+        }
+        return null;
     }
 
     
