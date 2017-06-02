@@ -9,9 +9,6 @@ public class PodatkovnaBaza
         String input="";
         String output;
         
-        seznamiUV.addImpl("pv", new PrioritetnaVrsta<>(new PrijateljPrimerjajPoImenu()), new PrioritetnaVrsta<>(new PrijateljPrimerjajPoTelSt()));
-        seznamiUV.addImpl("sk", new Sklad<>(new PrijateljPrimerjajPoImenu()), new Sklad<Prijatelj>(new PrijateljPrimerjajPoTelSt()));
-        seznamiUV.addImpl("bst", new Bst<>(new PrijateljPrimerjajPoImenu()), new Bst<>(new PrijateljPrimerjajPoTelSt()));
         
         try
         {

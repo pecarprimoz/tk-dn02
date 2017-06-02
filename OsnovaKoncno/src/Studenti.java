@@ -15,16 +15,16 @@ import java.io.InputStreamReader;
  */
 
 
-public class Studenti<Tip extends Comparable>  {
+public class Studenti<Tip> {
     protected String ime;
     protected String priimek;
-    protected int ID;
-    protected float povpOcena;
+    protected String ID;
+    protected double povpOcena;
     
     public Studenti()  {
     }
 
-    public Studenti(String ime, String priimek, int vpisnaStevilka, float povpOcena)
+    public Studenti(String ime, String priimek, String vpisnaStevilka, double povpOcena)
     {
         this.ime = ime;
         this.priimek = priimek;
@@ -52,17 +52,17 @@ public class Studenti<Tip extends Comparable>  {
         this.priimek = priimek;
     }
 
-    public int getID()
+    public String getID()
     {
         return ID;
     }
 
-    public void setID(int ID)
+    public void setID(String ID)
     {
         this.ID = ID;
     }
     
-    public float getAvgGrade()
+    public double getAvgGrade()
     {
         return povpOcena;
     }

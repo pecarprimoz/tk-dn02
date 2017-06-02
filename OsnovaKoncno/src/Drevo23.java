@@ -18,16 +18,7 @@ import java.util.List;
  * @author primoz
  */
 
-class StudentPrimerjajPoImenu implements java.util.Comparator<Studenti>
-{
-    @Override
-    public int compare(Studenti o1, Studenti o2)
-    {
-        String ime1 = o1.getPriimek() + ", " + o1.getIme();
-        String ime2 = o2.getPriimek() + ", " + o2.getIme();
-        return ime1.compareToIgnoreCase(ime2);
-    }
-}
+
 
 class PrimerjajPoTipu <Tip extends Comparable>  implements java.util.Comparator<Tip>
 {
@@ -38,8 +29,35 @@ class PrimerjajPoTipu <Tip extends Comparable>  implements java.util.Comparator<
     }
 }
 
+class StudentPrimerjajPoImenu<Tip extends Comparable> implements java.util.Comparator<Studenti>
+{
+    @Override
+    public int compare(Studenti o1, Studenti o2)
+    {
+        String sifra1=o1.getID();
+        String sifra2=o2.getID();
+        int sifreOK = sifra1.compareToIgnoreCase(sifra2);
+        String imePriimek1=o1.getIme()+o1.getPriimek();
+        String imePriimek2=o2.getIme()+o2.getPriimek();
+        int imenaOk=imePriimek1.compareToIgnoreCase(imePriimek2);
+        if(sifreOK==0 || imenaOk == 0){
+            return 0;
+        }
+        return sifreOK;
+    }
+}
+class StPrimerjajPoTelSt<Studenti extends Comparable>implements java.util.Comparator<Integer>
+{
+    @Override
+    public int compare(Integer t, Integer t1) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
-public class Drevo23 <Tip extends Comparable> implements Seznam<Tip>{
+}
+
+
+//prej je blo  <Tip extends Comparable>
+public class Drevo23<Tip> implements Seznam<Tip>{
 
     @Override
     public void print() {
@@ -683,6 +701,7 @@ public class Drevo23 <Tip extends Comparable> implements Seznam<Tip>{
                 return true;
             }
         }
+        this.root_node=org;
         return false;
     }
 

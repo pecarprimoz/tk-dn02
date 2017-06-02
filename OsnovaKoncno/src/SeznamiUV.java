@@ -7,24 +7,53 @@ import java.util.ArrayList;
 
 public class SeznamiUV {
 
-    HashMap<String, Seznam<Prijatelj>> seznamiPoImenu;
-    HashMap<String, Seznam<Prijatelj>> seznamiPoTelSt;
-    Seznam<Prijatelj> seznamPoImenu;
-    Seznam<Prijatelj> seznamPoTelSt;
+    Drevo23 <Studenti>dv;
     
     
     static String memoryError = "Error: not enough memory, operation failed";
    
     public SeznamiUV() {
-        seznamiPoImenu = new HashMap<>();
-        seznamiPoTelSt = new HashMap<>();
+        dv = new Drevo23(new StudentPrimerjajPoImenu<>());
     }
-    
-    public void addImpl(String key, Seznam<Prijatelj> seznamPoImenu, Seznam<Prijatelj> seznamPoTelSt) {
-        seznamiPoImenu.put(key, seznamPoImenu);
-        seznamiPoTelSt.put(key, seznamPoTelSt);
+    public Studenti promptUserToAdd() throws IOException{
+        String ID="";
+        String fname="";
+        String lname="";
+        double avg_grade=0.0;
+        String input;
+        BufferedReader br_ID = new BufferedReader(new InputStreamReader(System.in));
+        System.out.print("add> Student ID: ");
+            input = br_ID.readLine();
+            if(!input.matches("[0-9]+") && input.length()<9){
+                return null;
+            }
+            ID=input;
+        BufferedReader br_name = new BufferedReader(new InputStreamReader(System.in));
+        System.out.print("add> First name: ");
+            input = br_name.readLine();
+            if(!input.matches("[a-zA-Z ]+")){
+                return null;
+            }
+            fname=input;
+        BufferedReader br_surname = new BufferedReader(new InputStreamReader(System.in));
+        System.out.print("add> Last name: ");
+            input = br_surname.readLine();
+            if(!input.matches("[a-zA-Z]+")){
+                return null;
+            }
+            lname=input;
+        BufferedReader br_num = new BufferedReader(new InputStreamReader(System.in));
+        System.out.print("add> Avg. grade: ");
+            input = br_num.readLine();
+            if(!input.matches("[0-9].[0-9]")){
+                return null;
+            }
+            avg_grade=Double.parseDouble(input);
+            return new Studenti(fname, lname, ID, avg_grade);
     }
-
+    public boolean promptUserToDelete(){
+        return true;
+    }
     public String processInput(String input) {
         String token;
         String result = "OK";
@@ -38,100 +67,46 @@ public class SeznamiUV {
             token = params[0];
         }
         if(token.equals("exit")){
-            return "Have a nice day.";
-        }
-
-        if (!token.equals("use") && (null == seznamPoImenu)) {
-            return "Error: please specify a data structure (use {pv|sk|bst})";
+            return "Goodbye.";
         }
         try {
-            if (token.equals("use")){
-                if (params.length > 1) {
-                    String structType = params[1];
-                    seznamPoImenu = seznamiPoImenu.get(structType);
-                    seznamPoTelSt = seznamiPoTelSt.get(structType);
-                    if (null == seznamPoImenu) {
-                        result = "Error: please specify a correct data structure type {pv|sk|bst}";
-                    }
-
-                } else {
-                    result = "Error: please specify a data structure type {pv|sk|bst}";
+            //Napis se teste za to, FAKING PARAMSE MORS GLEDAT KER JE TAKO ZASTAVLJENA NALOGA
+            if(params.length>3){
+                if(token.equals("add") && params.length==5){
+                    Studenti curStudenti = new Studenti(params[2], params[3], params[1], Double.parseDouble(params[4]));
+                    if(!dv.exists(curStudenti)){
+                    dv.add(curStudenti);
+                    result = "OK";
+                }
+                else{
+                    result = "Student already exists.";
+                }
+                }
+                else{
+                    return "Invalid argument";
+                }
+                return result;
+            }
+                
+            
+            if (token.equals("add")){
+                Studenti curStudent = promptUserToAdd();
+                if(curStudent==null){
+                    return "Invalid input data";
+                }
+                if(!dv.exists(curStudent)){
+                    dv.add(curStudent);
+                    result = "OK";
+                }
+                else{
+                    result = "Student already exists.";
                 }
             }
-            else if (token.equals("add")){
-                if (params.length == 4)
-                {
-                    seznamPoImenu.add(new Prijatelj(params[1], params[2], params[3]));
-                    seznamPoTelSt.add(new Prijatelj(params[1], params[2], params[3]));
-                }
-                else
-                    result = "Error: please specify three strings";
+            else if(token.equals("remove")){
+                promptUserToDelete();
             }
-            else if (token.equals("removefirst")){
-                result = seznamPoImenu.removeFirst().toString();
-                seznamPoTelSt.removeFirst().toString();
-            }
-            else if (token.equals("remove")){
-                if (params.length == 3)  {
-                    seznamPoImenu.remove(new Prijatelj(params[1], params[2], ""));
-                }
-                else if(params.length == 4){
-                    seznamPoTelSt.remove(new Prijatelj(params[1], params[2], params[3]));
-                }
-                else
-                    result = "Error: please specify two strings";
-            }
-            else if (token.equals("getfirst")){
-                result = seznamPoImenu.getFirst().toString();
-            }
-            else if (token.equals("count")){
-                result = seznamPoImenu.size() + "";
-            }
-            else if (token.equals("depth")){
-                result = seznamPoImenu.depth() + "";
-            }
-            else if (token.equals("reset")){
-                while (!seznamPoImenu.isEmpty()) {
-                    seznamPoImenu.removeFirst();
-                }
-                while (!seznamPoTelSt.isEmpty()) {
-                    seznamPoTelSt.removeFirst();
-                }
-            }
-            else if (token.equals("exists")){
-                result = "No";
-                if (params.length == 3)  {
-                    if (seznamPoImenu.exists(new Prijatelj(params[1], params[2], "")))
-                        result = "Yes";
-                } else if (params.length == 2)  {
-                    if (seznamPoTelSt.exists(new Prijatelj("", "", params[1])))
-                        result = "Yes";
-                }
-                else {
-                    result = "Error: please specify two strings";
-                }
-            }
-            else if (token.equals("print")){
-                seznamPoImenu.print();
-            }
-            else if (token.equals("save")){
-                if (params.length == 2) {
-                    seznamPoImenu.save(new FileOutputStream(params[1].toString()+"_p.bin"));
-                    seznamPoImenu.save(new FileOutputStream(params[1].toString()+"_t.bin"));
-                } else {
-                    result = "Error: please specify a file name";
-                }
-            }
-            else if (token.equals("restore")){
-                if (params.length == 2) {
-                    seznamPoImenu.restore(new FileInputStream(params[1].toString()+"_p.bin"));
-                    seznamPoImenu.restore(new FileInputStream(params[1].toString()+"_t.bin"));
-                } else {
-                    result = "Error: please specify a file name";
-                }
-            }
-            else {
-                result = "Error: invalid command";
+            else{
+                result = "Invalid command.";
             }
                 
 
@@ -141,12 +116,10 @@ public class SeznamiUV {
             result = "Error: Duplicated entry";
         } catch (java.util.NoSuchElementException e) {
             result = "Error: structure is empty";
-        } catch (IOException e) {
-            result = "Error: IO error " + e.getMessage();
-        } catch (ClassNotFoundException e) {
-            result = "Error: Unknown format";
-        } catch (OutOfMemoryError e) {
+        }   catch (OutOfMemoryError e) {
             return memoryError;
+        }catch (IOException e) {
+            result = "Error: Wrong at add.";
         }
 
         return result;

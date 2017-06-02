@@ -5,7 +5,7 @@ import org.junit.*;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * and open the template in the editor.//
  */
 
 /**
@@ -14,11 +14,12 @@ import org.junit.*;
  */
 public class Drevo23Test {
     Drevo23<Integer> dv;
-    //Drevo23<Studenti> st; figure this out
+    Drevo23<Studenti> st;
     
     @Before
     public void setUp() {
         dv = new Drevo23<Integer>(new PrimerjajPoTipu<Integer>());
+        st = new Drevo23<Studenti>(new StudentPrimerjajPoImenu<>());
     }
     
     @Test
@@ -711,6 +712,11 @@ public class Drevo23Test {
         dv.add(3);
         dv.reset(5);
         assertEquals(5,(int) dv.getFirst());
+    }
+    @Test
+    public void testAddStudent(){
+        st.add(new Studenti("B", "A", "63150213", 7.3));
+        st.add(new Studenti("A", "A", "63150211", 7.7));
     }
     
 }
