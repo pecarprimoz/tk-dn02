@@ -1,3 +1,9 @@
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectOutputStream;
 import java.util.Arrays;
 import static org.junit.Assert.*;
 import org.junit.*;
@@ -26,6 +32,7 @@ public class Drevo23Test {
     public void init23Tree() {
         //System.out.println(dv.get_root_node());
     }
+    /*
     @Test
     public void addOne23(){
         dv.add(5);
@@ -705,13 +712,13 @@ public class Drevo23Test {
     public void removeisNull(){
         assertEquals(null, dv.remove(1));
     }
-    @Test
+    @Test(expected=java.lang.IllegalArgumentException.class)
     public void testReset(){
         dv.add(1);
         dv.add(2);
         dv.add(3);
         dv.reset();
-        assertEquals(null, dv.getFirst());
+        dv.getFirst();
     }
     @Test
     public void testAddStudent(){
@@ -722,13 +729,13 @@ public class Drevo23Test {
     public void testSeachStudentByName(){
         st.add(new Studenti("B", "A", "63150213", 7.3));
         st.add(new Studenti("A", "A", "63150211", 7.7));
-        assertEquals("A, B - 63150213",st.search(new Studenti("B","A","",0.0)).toString());
+        assertEquals("63150213 | A, B | 7.3",st.search(new Studenti("B","A","",0.0)).toString());
     }
     @Test
     public void testSeachStudentByID(){
         st.add(new Studenti("B", "A", "63150213", 7.3));
         st.add(new Studenti("A", "A", "63150211", 7.7));
-        assertEquals("A, B - 63150213",st.search(new Studenti("","","63150213",0.0)).toString());
+        assertEquals("63150213 | A, B | 7.3",st.search(new Studenti("","","63150213",0.0)).toString());
     }
     @Test
     public void testSeachStudentByIDMultiple(){
@@ -737,7 +744,24 @@ public class Drevo23Test {
         st.add(new Studenti("A", "C", "63150210", 7.7));
         st.add(new Studenti("A", "D", "63150209", 7.7));
         st.add(new Studenti("A", "F", "63150208", 7.7));
-        assertEquals("F, A - 63150208",st.search(new Studenti("","","63150208",0.0)).toString());
+        assertEquals("63150208 | F, A | 7.7",st.search(new Studenti("","","63150208",0.0)).toString());
+    }*/
+    @Test
+    public void testSaveMultipleStudents() throws IOException{
+        st.add(new Studenti("B", "A", "63150213", 7.3));
+        st.add(new Studenti("A", "A", "63150211", 7.7));
+        st.add(new Studenti("A", "C", "63150210", 7.7));
+        st.add(new Studenti("A", "D", "63150209", 7.7));
+        st.add(new Studenti("A", "F", "63150208", 7.7));
+        st.add(new Studenti("X", "C", "63150333", 7.7));
+        st.add(new Studenti("Z", "D", "63150222", 7.7));
+        st.add(new Studenti("Y", "F", "63150111", 7.7));
+        st.save(new ObjectOutputStream(new FileOutputStream("seri.bin")));
+    }
+     @Test
+    public void testRestore() throws IOException,ClassNotFoundException{
+        st.restore(new FileInputStream(new File("lasttest")));
+         assertEquals("2 | mem, kurc | 4.2", st.root_node.left.toString());
     }
     
 }

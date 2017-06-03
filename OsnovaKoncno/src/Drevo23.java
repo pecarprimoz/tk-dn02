@@ -4,9 +4,13 @@ import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
+import java.io.StringWriter;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Scanner;
+import sun.misc.IOUtils;
 
  
 /*
@@ -22,7 +26,7 @@ import java.util.List;
 
 
 
-class PrimerjajPoTipu <Tip extends Comparable>  implements java.util.Comparator<Tip>
+class PrimerjajPoTipu <Tip extends Comparable>implements java.util.Comparator<Tip>,java.io.Serializable
 {
     @Override
     public int compare(Tip o1, Tip o2)
@@ -31,7 +35,7 @@ class PrimerjajPoTipu <Tip extends Comparable>  implements java.util.Comparator<
     }
 }
 
-class StudentPrimerjajPoImenu<Tip extends Comparable> implements java.util.Comparator<Studenti>
+class StudentPrimerjajPoImenu<Tip extends Comparable> implements java.util.Comparator<Studenti>,java.io.Serializable
 {
     @Override
     public int compare(Studenti o1, Studenti o2)
@@ -48,18 +52,9 @@ class StudentPrimerjajPoImenu<Tip extends Comparable> implements java.util.Compa
         return sifreOK;
     }
 }
-class StPrimerjajPoTelSt<Studenti extends Comparable>implements java.util.Comparator<Integer>
-{
-    @Override
-    public int compare(Integer t, Integer t1) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-}
-
 
 //prej je blo  <Tip extends Comparable>
-public class Drevo23<Tip> implements Seznam<Tip>{
+public class Drevo23<Tip> implements Seznam<Tip>,java.io.Serializable{
 
     @Override
     public void print() {
@@ -69,26 +64,14 @@ public class Drevo23<Tip> implements Seznam<Tip>{
         }
     }
 
-    @Override
-    public void save(OutputStream outputStream) throws IOException {
-        ObjectOutputStream out = new ObjectOutputStream(outputStream);
-        out.writeInt(this.size());
-        if(this.root_node!=null){
-            out.writeObject(this.root_node);
-        }
-        else{
-            System.out.println("The data structure is empty, nothing to save.");
-        }
-        
-    }
 
     
-    class Node23{
+    class Node23 implements java.io.Serializable{
         public Node23 parent;
         public Tip left,right;
         public Node23 left_child, mid_child, right_child;
         
-        public Node23(Tip e){
+        public Node23(Tip e) {
             parent=null;
             left = e;
             right = null;
@@ -100,7 +83,7 @@ public class Drevo23<Tip> implements Seznam<Tip>{
     }
     public Comparator<Tip> comparator;
     Node23 root_node;
-        public Drevo23(Comparator<Tip> comparator){
+        public Drevo23(Comparator<Tip> comparator) {
             this.comparator = comparator;
             this.root_node = null;
         }
@@ -113,16 +96,55 @@ public class Drevo23<Tip> implements Seznam<Tip>{
     }
     
     @Override
-    public void restore(InputStream inputStream) throws IOException, ClassNotFoundException {
-        ObjectInputStream in = new ObjectInputStream(inputStream);
-        int count = in.readInt();
-        if(count==0){
-            System.out.println("Nothing to read.");
-        }
-        else{
-            this.root_node=(Node23)in.readObject();
-        }
+    public void save(OutputStream out) throws IOException {
+        
+        save(root_node, out);
+        out.close();
     }
+
+    private void save(Node23 node, OutputStream out) throws IOException {
+        if (null == node) {
+            return;
+        }
+        save(node.left_child, out); 
+        String l = "$"+node.left.toString()+"$";
+        
+        out.write(l.getBytes(Charset.forName("UTF-8")));
+        if(node.right!=null){
+            String r = node.right.toString();
+            out.write(r.getBytes(Charset.forName("UTF-8")));
+        }
+        
+        save(node.mid_child, out);
+        save(node.right_child, out);
+        
+        
+    }
+    
+    public void parseArgumentsToTree(String []ar){
+        for(int i=0; i<ar.length; i++){
+                String[] leftS=null;
+                String first = ar[i].replaceAll("\\$", "").replaceAll("[|]", "").replaceAll("\\,", "").replaceAll("\\s+", "|");
+                if(first!=null && first.length()>6 && !first.equals("")){
+                    leftS=first.split("\\|");
+                    //System.out.println(first);
+                    add((Tip)new Studenti(leftS[1], leftS[2], leftS[0], Double.parseDouble(leftS[3])));
+                    //System.out.println(this.root_node.left.toString());
+                }
+            }
+            
+    }
+
+    @Override
+    public void restore(InputStream is) throws IOException, ClassNotFoundException {
+        Scanner s = new java.util.Scanner(is).useDelimiter("\\A");
+        String tmp = s.hasNext() ? s.next() : "";
+        String [] ss = tmp.split("\\$");
+        parseArgumentsToTree(ss);
+        
+    }
+
+
     
     public void addUpper(Tip e){
         //v primeru da imamo zgoraj null lahko samo dodamo, v primeru da nimamo
@@ -138,7 +160,7 @@ public class Drevo23<Tip> implements Seznam<Tip>{
             }
         }
     }
-    public Node23 split(Tip e){
+    public Node23 split(Tip e) {
         Node23 tmp = this.root_node.parent;
         Node23 upper_root = null;
         

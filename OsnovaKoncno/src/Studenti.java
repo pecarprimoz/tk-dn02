@@ -15,7 +15,7 @@ import java.io.InputStreamReader;
  */
 
 
-public class Studenti<Tip> {
+public class Studenti<Tip> implements java.io.Serializable{
     protected String ime;
     protected String priimek;
     protected String ID;
@@ -24,7 +24,7 @@ public class Studenti<Tip> {
     public Studenti()  {
     }
 
-    public Studenti(String ime, String priimek, String vpisnaStevilka, double povpOcena)
+    public Studenti(String ime, String priimek, String vpisnaStevilka, double povpOcena) 
     {
         this.ime = ime;
         this.priimek = priimek;
@@ -75,7 +75,7 @@ public class Studenti<Tip> {
     @Override
     public String toString()
     {
-        return ID + " | "+priimek+" "+ime+" "+povpOcena;
+        return ID + " | "+priimek+", "+ime+" | "+povpOcena;
     }
     
 }

@@ -209,6 +209,17 @@ public class SeznamiUV {
                         return "Student does not exist.";
                     }
                 }
+                else if(token.equals("save")){
+                    String filename=params[1];
+                    dv.save(new FileOutputStream(new File(filename)));
+                    return "OK";
+                }
+                else if(token.equals("restore")){
+                    String filename=params[1];
+                    dv.restore(new FileInputStream(new File(filename)));
+                    return "OK";
+
+                }
             }
             if (token.equals("add")){
                 Studenti curStudent = promptUserToAdd();
@@ -268,8 +279,11 @@ public class SeznamiUV {
             result = "Error: structure is empty";
         }   catch (OutOfMemoryError e) {
             return memoryError;
+        }
+        catch (ClassNotFoundException e) {
+            System.out.println("I/O Error:"+e.toString());
         }catch (IOException e) {
-            result = "Error: Wrong at add.";
+            System.out.println(e.toString());
         }
 
         return result;
