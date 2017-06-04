@@ -15,8 +15,8 @@ class pexpect:
     def __init__(self):
         commandLine = ["java",
                        "-cp",
-                       "C:\\Users\\neon\\Documents\\NetBeansProjects\\OsnovaKoncno\\build\\classes",
-                       "PodatkovnaBaza"]
+                       "C:\\Users\\neonpc\\Desktop\\tk_last\\tk-dn02\\OsnovaKoncno\\build\\classes",
+                       "Student"]
         self.process = subprocess.Popen(commandLine,
                                         stdin=subprocess.PIPE,
                                         stdout=subprocess.PIPE,

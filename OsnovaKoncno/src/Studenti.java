@@ -1,8 +1,4 @@
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -21,8 +17,6 @@ public class Studenti<Tip> implements java.io.Serializable{
     protected String ID;
     protected double povpOcena;
     
-    public Studenti()  {
-    }
 
     public Studenti(String ime, String priimek, String vpisnaStevilka, double povpOcena) 
     {

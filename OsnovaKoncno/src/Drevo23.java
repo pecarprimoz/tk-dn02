@@ -131,6 +131,7 @@ public class Drevo23<Tip> implements Seznam<Tip>,java.io.Serializable{
             
     }
 
+    
     @Override
     public void restore(InputStream is) throws IOException, ClassNotFoundException {
         Scanner s = new java.util.Scanner(is).useDelimiter("\\A");

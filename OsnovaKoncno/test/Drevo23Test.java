@@ -758,10 +758,58 @@ public class Drevo23Test {
         st.add(new Studenti("Y", "F", "63150111", 7.7));
         st.save(new ObjectOutputStream(new FileOutputStream("seri.bin")));
     }
-     @Test
+    @Test
     public void testRestore() throws IOException,ClassNotFoundException{
         st.restore(new FileInputStream(new File("lasttest")));
          assertEquals("2 | mem, kurc | 4.2", st.root_node.left.toString());
+    }
+    @Test
+    public void testNoDepth() throws IOException,ClassNotFoundException{
+        assertEquals(0, st.depth());
+    }
+    @Test
+    public void testPrintForCoco() {
+        st.add(new Studenti("B", "A", "63150213", 7.3));
+        st.add(new Studenti("A", "A", "63150211", 7.7));
+        st.add(new Studenti("A", "C", "63150210", 7.7));
+        st.print();
+    }
+    @Test
+    public void testSearchNone() {
+        assertEquals(null, st.search(new Studenti("B", "A", "63150213", 7.3)));
+    }
+    @Test
+    public void testSearchRight() {
+        st.add(new Studenti("B", "A", "63150213", 7.3));
+        st.add(new Studenti("A", "A", "63150211", 7.7));
+        st.add(new Studenti("A", "C", "63150210", 7.7));
+        st.add(new Studenti("A", "D", "63150209", 7.7));
+        st.add(new Studenti("A", "F", "63150208", 7.7));
+        st.add(new Studenti("X", "C", "63150333", 7.7));
+        st.add(new Studenti("Z", "D", "63150222", 7.7));
+        st.add(new Studenti("Y", "F", "63150111", 7.7));
+        assertEquals("63150333 | C, X | 7.7", st.search(new Studenti("X", "C", "63150333", 7.7)).toString());
+    }
+    @Test
+    public void testSearchLeft() {
+        st.add(new Studenti("B", "A", "63150213", 7.3));
+        st.add(new Studenti("A", "A", "63150211", 7.7));
+        st.add(new Studenti("A", "C", "63150210", 7.7));
+        st.add(new Studenti("A", "D", "63150209", 7.7));
+        st.add(new Studenti("A", "F", "63150208", 7.7));
+        st.add(new Studenti("X", "C", "63150333", 7.7));
+        st.add(new Studenti("Z", "D", "63150222", 7.7));
+        st.add(new Studenti("Y", "F", "63150111", 7.7));
+        assertEquals("63150209 | D, A | 7.7", st.search(new Studenti("A", "D", "63150209", 7.7)).toString());
+    }
+    @Test
+    public void testSearchMid() {
+        st.add(new Studenti("B", "A", "1", 7.3));
+        st.add(new Studenti("A", "A", "2", 7.7));
+        st.add(new Studenti("A", "C", "3", 7.7));
+        st.add(new Studenti("A", "D", "4", 7.7));
+        st.add(new Studenti("A", "F", "5", 7.7));
+        assertEquals("3 | C, A | 7.7", st.search(new Studenti("A", "C", "3", 7.7)).toString());
     }
     
 }

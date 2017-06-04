@@ -26,9 +26,13 @@ public class SeznamiUV {
         BufferedReader br_ID = new BufferedReader(new InputStreamReader(System.in));
         System.out.print("add> Student ID: ");
             input = br_ID.readLine();
-            if(!input.matches("[0-9]+") && input.length()<9){
+            if(input.length()>8){
                 return null;
             }
+            
+            if(!input.matches("[0-9]+")){
+                return null;
+            }   
             ID=input;
         BufferedReader br_name = new BufferedReader(new InputStreamReader(System.in));
         System.out.print("add> First name: ");
@@ -116,7 +120,7 @@ public class SeznamiUV {
         if(num_of_students==0){
             return ">> No. of students: 0";
         }
-        endstring+=">> No. of students"+endstring+"\n";
+        endstring+=">> No. of students "+num_of_students+"\n";
         
         List <Studenti> al = dv.asList();
         al.sort(new Comparator<Studenti>() {
@@ -153,7 +157,7 @@ public class SeznamiUV {
         String[] params = input.split(" ");
 
         //moramo preverjati za primer praznega stringa
-        if (params.length == 0) {
+        if (params.length == 0 || params[0].equals("")) {
             return "Error: enter command";
         }
         else{
@@ -190,10 +194,7 @@ public class SeznamiUV {
                     }
                     Studenti temp = dv.remove(new Studenti("", "", sifra, 0));
                     if(temp!=null){
-                        return temp.toString();
-                    }
-                    else{
-                        return "Student does not exist.";
+                        return "OK";
                     }
                 }
                 else if(token.equals("search")){
@@ -220,7 +221,7 @@ public class SeznamiUV {
                     return "OK";
 
                 }
-            }
+            }if(params.length==1){
             if (token.equals("add")){
                 Studenti curStudent = promptUserToAdd();
                 if(curStudent==null){
@@ -236,11 +237,15 @@ public class SeznamiUV {
             }
             else if(token.equals("remove")){
                 result = promptUserToDelete();
+                
                 if(result==null){
                     return "Student does not exist.";
                 }
                 if(result.equals("Invalid input data.")){
                     return "Invalid input data.";
+                }
+                if(result != null){
+                    return "OK";
                 }
             }
             else if(token.equals("search")){
@@ -256,7 +261,8 @@ public class SeznamiUV {
                 return assemblePrint();
             }
             else if(token.equals("count")){
-                return ">> No. of students:"+dv.size();
+                int size = dv.size();
+                return ">> No. of students: "+size;
             }
             else if(token.equals("reset")){
                 promptUserReset();
@@ -265,8 +271,9 @@ public class SeznamiUV {
                 }
                 result = "OK";
             }
-            else{
-                result = "Invalid command.";
+                else{
+                    result = "Invalid command.";
+                }
             }
             
                 
@@ -274,7 +281,7 @@ public class SeznamiUV {
         } catch (UnsupportedOperationException e) {
             result = "Error: Operation not supported";
         } catch (IllegalArgumentException e) {
-            result = "Error: Duplicated entry";
+            result = "Error: Student does not exist";
         } catch (java.util.NoSuchElementException e) {
             result = "Error: structure is empty";
         }   catch (OutOfMemoryError e) {
