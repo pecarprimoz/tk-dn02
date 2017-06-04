@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Studenti.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;Seznami&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">Studenti.java</span></div><h1>Studenti.java</h1><pre class="source lang-java linenums">
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author neon
+ */
+
+
+public class Studenti&lt;Tip&gt; implements java.io.Serializable{
+    protected String ime;
+    protected String priimek;
+    protected String ID;
+    protected double povpOcena;
+    
+<span class="nc" id="L24">    public Studenti()  {</span>
+<span class="nc" id="L25">    }</span>
+
+    public Studenti(String ime, String priimek, String vpisnaStevilka, double povpOcena) 
+<span class="fc" id="L28">    {</span>
+<span class="fc" id="L29">        this.ime = ime;</span>
+<span class="fc" id="L30">        this.priimek = priimek;</span>
+<span class="fc" id="L31">        this.ID = vpisnaStevilka;</span>
+<span class="fc" id="L32">        this.povpOcena = povpOcena;</span>
+<span class="fc" id="L33">    }</span>
+    
+    public String getIme()
+    {
+<span class="fc" id="L37">        return ime;</span>
+    }
+
+    public void setIme(String ime)
+    {
+<span class="nc" id="L42">        this.ime = ime;</span>
+<span class="nc" id="L43">    }</span>
+
+    public String getPriimek()
+    {
+<span class="fc" id="L47">        return priimek;</span>
+    }
+
+    public void setPriimek(String priimek)
+    {
+<span class="nc" id="L52">        this.priimek = priimek;</span>
+<span class="nc" id="L53">    }</span>
+
+    public String getID()
+    {
+<span class="fc" id="L57">        return ID;</span>
+    }
+
+    public void setID(String ID)
+    {
+<span class="nc" id="L62">        this.ID = ID;</span>
+<span class="nc" id="L63">    }</span>
+    
+    public double getAvgGrade()
+    {
+<span class="nc" id="L67">        return povpOcena;</span>
+    }
+
+    public void setAvgGrade(float avgGrade)
+    {
+<span class="nc" id="L72">        this.povpOcena = avgGrade;</span>
+<span class="nc" id="L73">    }</span>
+    
+    @Override
+    public String toString()
+    {
+<span class="fc" id="L78">        return ID + &quot; | &quot;+priimek+&quot;, &quot;+ime+&quot; | &quot;+povpOcena;</span>
+    }
+    
+}
+
+    
+    
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

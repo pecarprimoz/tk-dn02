@@ -32,7 +32,7 @@ public class Drevo23Test {
     public void init23Tree() {
         //System.out.println(dv.get_root_node());
     }
-    /*
+    
     @Test
     public void addOne23(){
         dv.add(5);
@@ -745,7 +745,7 @@ public class Drevo23Test {
         st.add(new Studenti("A", "D", "63150209", 7.7));
         st.add(new Studenti("A", "F", "63150208", 7.7));
         assertEquals("63150208 | F, A | 7.7",st.search(new Studenti("","","63150208",0.0)).toString());
-    }*/
+    }
     @Test
     public void testSaveMultipleStudents() throws IOException{
         st.add(new Studenti("B", "A", "63150213", 7.3));

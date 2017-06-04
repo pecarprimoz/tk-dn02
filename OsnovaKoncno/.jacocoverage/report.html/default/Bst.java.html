@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Bst.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;Seznami&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">Bst.java</span></div><h1>Bst.java</h1><pre class="source lang-java linenums">
+import java.io.*;
+import java.util.Comparator;
+//drevo uporablja vstavljanje elementa kot list, lahko bi ga tudi dodajali kot koren
+
+public class Bst&lt;Tip&gt; implements Seznam&lt;Tip&gt; {
+
+    class ElementBST {
+
+        public Tip value;
+        public ElementBST left, right;
+
+        public ElementBST(Tip e) {
+<span class="fc" id="L14">            this(e, null, null);</span>
+<span class="fc" id="L15">        }</span>
+
+<span class="fc" id="L17">        public ElementBST(Tip e, ElementBST lt, ElementBST rt) {</span>
+<span class="fc" id="L18">            value = e;</span>
+<span class="fc" id="L19">            left = lt;</span>
+<span class="fc" id="L20">            right = rt;</span>
+<span class="fc" id="L21">        }</span>
+    }
+    ElementBST rootNode;
+    private Tip minNodeValue;
+    private Comparator&lt;Tip&gt; comparator;
+
+
+<span class="fc" id="L28">    public Bst(Comparator&lt;Tip&gt; comparator) {</span>
+<span class="fc" id="L29">        rootNode = null;</span>
+<span class="fc" id="L30">        this.comparator = comparator;</span>
+<span class="fc" id="L31">    }</span>
+
+    private boolean member(Tip e) {
+<span class="fc" id="L34">        return member(e, rootNode);</span>
+    }
+
+    private boolean member(Tip e, ElementBST node) {
+<span class="fc bfc" id="L38" title="All 2 branches covered.">        if (node == null) {</span>
+<span class="fc" id="L39">            return false;</span>
+<span class="fc bfc" id="L40" title="All 2 branches covered.">        } else if (comparator.compare(e, node.value) == 0) {</span>
+<span class="fc" id="L41">            return true;</span>
+<span class="fc bfc" id="L42" title="All 2 branches covered.">        } else if (comparator.compare(e, node.value) &lt; 0) {</span>
+<span class="fc" id="L43">            return member(e, node.left);</span>
+        } else {
+<span class="fc" id="L45">            return member(e, node.right);</span>
+        }
+    }
+
+    private void insert(Tip e) {
+<span class="fc" id="L50">        rootNode = insertLeaf(e, rootNode);</span>
+<span class="fc" id="L51">    }</span>
+
+    private void delete(Tip e) {
+        //PRIMER: rootNode na levi je manjkal
+<span class="fc" id="L55">        rootNode = delete(e, rootNode);</span>
+<span class="fc" id="L56">    }</span>
+
+    private ElementBST insertLeaf(Tip e, ElementBST node) {
+<span class="fc bfc" id="L59" title="All 2 branches covered.">        if (node == null) {</span>
+<span class="fc" id="L60">            node = new ElementBST(e);</span>
+<span class="fc bfc" id="L61" title="All 2 branches covered.">        } else if (comparator.compare(e, node.value) &lt; 0) {</span>
+<span class="fc" id="L62">            node.left = insertLeaf(e, node.left);</span>
+<span class="pc bpc" id="L63" title="1 of 2 branches missed.">        } else if (comparator.compare(e, node.value) &gt; 0) {</span>
+<span class="fc" id="L64">            node.right = insertLeaf(e, node.right);</span>
+        } else {
+<span class="nc" id="L66">            throw new java.lang.IllegalArgumentException(); //element ze obstaja</span>
+        }
+<span class="fc" id="L68">        return node;</span>
+    }
+
+    private ElementBST delete(Tip e, ElementBST node) {
+<span class="pc bpc" id="L72" title="1 of 2 branches missed.">        if (node != null) {</span>
+<span class="fc bfc" id="L73" title="All 2 branches covered.">            if (comparator.compare(e, node.value) == 0) {</span>
+<span class="fc bfc" id="L74" title="All 2 branches covered.">                if (node.left == null) {</span>
+<span class="fc" id="L75">                    node = node.right;</span>
+<span class="pc bpc" id="L76" title="1 of 2 branches missed.">                } else if (node.right == null) {</span>
+<span class="nc" id="L77">                    node = node.left;</span>
+                } else {
+<span class="fc" id="L79">                    node.right = deleteMin(node.right);</span>
+<span class="fc" id="L80">                    node.value = minNodeValue;</span>
+                }
+<span class="fc bfc" id="L82" title="All 2 branches covered.">            } else if (comparator.compare(e, node.value) &lt; 0) {</span>
+<span class="fc" id="L83">                node.left = delete(e, node.left);</span>
+            } else {
+<span class="fc" id="L85">                node.right = delete(e, node.right);</span>
+            }
+        }
+<span class="fc" id="L88">        return node;</span>
+    }
+
+    private ElementBST deleteMin(ElementBST node) {
+<span class="pc bpc" id="L92" title="1 of 2 branches missed.">        if (node.left != null) {</span>
+<span class="nc" id="L93">            node.left = deleteMin(node.left);</span>
+<span class="nc" id="L94">            return node;</span>
+        } else {
+            //PRIMER: manjka prenos minimalne vrednosti
+<span class="fc" id="L97">            minNodeValue = node.value;</span>
+<span class="fc" id="L98">            return node.right;</span>
+        }
+    }
+
+    private int getDepth(ElementBST node) {
+<span class="fc bfc" id="L103" title="All 2 branches covered.">        if (node == null) {</span>
+<span class="fc" id="L104">            return 0;</span>
+        }
+<span class="fc" id="L106">        return 1 + Math.max(getDepth(node.left), getDepth(node.right));</span>
+    }
+
+    private int countNodes(ElementBST node) {
+<span class="fc bfc" id="L110" title="All 2 branches covered.">        if (node == null) {</span>
+<span class="fc" id="L111">            return 0;</span>
+        }
+<span class="fc" id="L113">        int i = 1 + countNodes(node.left) + countNodes(node.right);</span>
+<span class="fc" id="L114">        return i;</span>
+    }
+
+    @Override
+    public void add(Tip e) {
+<span class="fc" id="L119">        insert(e);</span>
+<span class="fc" id="L120">    }</span>
+
+    @Override
+    public Tip removeFirst() {
+<span class="pc bpc" id="L124" title="1 of 2 branches missed.">        if (this.isEmpty()) {</span>
+<span class="nc" id="L125">            throw new java.util.NoSuchElementException();</span>
+        }
+<span class="fc" id="L127">        Tip el = rootNode.value;</span>
+<span class="fc" id="L128">        delete(rootNode.value);</span>
+<span class="fc" id="L129">        return el;</span>
+    }
+
+    @Override
+    public Tip remove(Tip e) {
+<span class="pc bpc" id="L134" title="1 of 2 branches missed.">        if (!this.exists(e)) {</span>
+<span class="nc" id="L135">            throw new java.util.NoSuchElementException();</span>
+        } else {
+<span class="fc" id="L137">            delete(e);</span>
+        }
+<span class="fc" id="L139">        return e;</span>
+    }
+
+    @Override
+    public Tip getFirst() {
+<span class="fc bfc" id="L144" title="All 2 branches covered.">        if (this.isEmpty()) {</span>
+<span class="fc" id="L145">            throw new java.util.NoSuchElementException();</span>
+        }
+<span class="fc" id="L147">        return rootNode.value;</span>
+    }
+
+    @Override
+    public int depth() {
+<span class="fc" id="L152">        return getDepth(rootNode);</span>
+    }
+
+    @Override
+    public boolean isEmpty() {
+<span class="fc bfc" id="L157" title="All 2 branches covered.">        return (rootNode == null);</span>
+    }
+
+    @Override
+    public int size() {
+<span class="fc" id="L162">        int i = countNodes(rootNode);</span>
+<span class="fc" id="L163">        return i;</span>
+    }
+
+    @Override
+    public boolean exists(Tip e) {
+<span class="fc" id="L168">        return member(e);</span>
+    }
+
+    @Override
+    public void print() {
+<span class="nc" id="L173">        print(rootNode, 0);</span>
+<span class="nc" id="L174">    }</span>
+
+    private void print(ElementBST node, int numTabs) {
+<span class="nc bnc" id="L177" title="All 2 branches missed.">        if (null == node) {</span>
+<span class="nc" id="L178">            return;</span>
+        }
+
+<span class="nc" id="L181">        print(node.right, numTabs + 1);</span>
+<span class="nc bnc" id="L182" title="All 2 branches missed.">        for (int i = 0; i &lt; numTabs; ++i) {</span>
+<span class="nc" id="L183">            System.out.print('\t');</span>
+        }
+<span class="nc" id="L185">        System.out.println(node.value);</span>
+<span class="nc" id="L186">        print(node.left, numTabs + 1);</span>
+<span class="nc" id="L187">    }</span>
+
+    @Override
+    public void save(OutputStream outputStream) throws IOException {
+<span class="nc" id="L191">        ObjectOutputStream out = new ObjectOutputStream(outputStream);</span>
+<span class="nc" id="L192">        out.writeInt(this.size());</span>
+<span class="nc" id="L193">        save(rootNode, out);</span>
+<span class="nc" id="L194">    }</span>
+
+    private void save(ElementBST node, ObjectOutputStream out) throws IOException {
+<span class="nc bnc" id="L197" title="All 2 branches missed.">        if (null == node) {</span>
+<span class="nc" id="L198">            return;</span>
+        }
+<span class="nc" id="L200">        save(node.left, out);</span>
+<span class="nc" id="L201">        out.writeObject(node.value);</span>
+<span class="nc" id="L202">        save(node.right, out);</span>
+<span class="nc" id="L203">    }</span>
+
+    @Override
+    public void restore(InputStream inputStream) throws IOException, ClassNotFoundException {
+<span class="nc" id="L207">        ObjectInputStream in = new ObjectInputStream(inputStream);</span>
+<span class="nc" id="L208">        int count = in.readInt();</span>
+<span class="nc" id="L209">        rootNode = restore(in, count);</span>
+<span class="nc" id="L210">    }</span>
+
+    private ElementBST restore(ObjectInputStream in, int count) throws IOException, ClassNotFoundException {
+<span class="nc bnc" id="L213" title="All 2 branches missed.">        if (0 == count) {</span>
+<span class="nc" id="L214">            return null;</span>
+        }
+
+<span class="nc" id="L217">        ElementBST nodeLeft = restore(in, count / 2);</span>
+<span class="nc" id="L218">        ElementBST node = new ElementBST((Tip) in.readObject());</span>
+<span class="nc" id="L219">        node.left = nodeLeft;</span>
+<span class="nc" id="L220">        node.right = restore(in, (count - 1) / 2);</span>
+<span class="nc" id="L221">        return node;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

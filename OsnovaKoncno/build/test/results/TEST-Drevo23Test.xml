@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="debian" name="Drevo23Test" skipped="0" tests="3" time="0.083" timestamp="2017-06-03T20:05:36">
+<testsuite errors="0" failures="0" hostname="debian" name="Drevo23Test" skipped="0" tests="78" time="0.181" timestamp="2017-06-04T10:15:15">
   <properties>
     <property name="default.javac.source" value="1.8" />
     <property name="file.encoding.pkg" value="sun.io" />
@@ -45,7 +45,7 @@
     <property name="libs.absolutelayout.javadoc" value="" />
     <property name="libs.junit_4.maven-pom" value="" />
     <property name="netbeans.buildnumber" value="20170419-debian-8.1" />
-    <property name="ant.project.invoked-targets" value="test-single" />
+    <property name="ant.project.invoked-targets" value="test" />
     <property name="jna.platform.library.path" value="/usr/lib/x86_64-linux-gnu:/lib/x86_64-linux-gnu:/lib64:/usr/lib:/lib:/lib/i386-linux-gnu:/usr/lib/i386-linux-gnu:/usr/lib/x86_64-linux-gnu/libfakeroot" />
     <property name="annotation.processing.run.all.processors" value="true" />
     <property name="user.name" value="primoz" />
@@ -82,7 +82,7 @@
     <property name="ant.project.default-target" value="default" />
     <property name="javac.profile.cmd.line.arg" value="" />
     <property name="libs.JAXB-ENDORSED.src" value="" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner Drevo23Test skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/primoz/tk_last/tk-dn02/OsnovaKoncno/build/test/results/TEST-Drevo23Test.xml crashfile=/home/primoz/tk_last/tk-dn02/OsnovaKoncno/build/junitvmwatcher4693396214712678777.properties propsfile=/home/primoz/tk_last/tk-dn02/OsnovaKoncno/build/junit8744459224457572391.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner Drevo23Test skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/primoz/tk_last/tk-dn02/OsnovaKoncno/build/test/results/TEST-Drevo23Test.xml crashfile=/home/primoz/tk_last/tk-dn02/OsnovaKoncno/build/junitvmwatcher2121910473001598033.properties propsfile=/home/primoz/tk_last/tk-dn02/OsnovaKoncno/build/junit8760375389664911533.properties" />
     <property name="https.nonProxyHosts" value="localhost|127.0.0.1|debian" />
     <property name="built-jar.properties" value="/home/primoz/tk_last/tk-dn02/OsnovaKoncno/build/built-jar.properties" />
     <property name="ant.junit.enabletestlistenerevents" value="true" />
@@ -107,21 +107,19 @@
     <property name="libs.javac-api.maven-pom" value="" />
     <property name="javadoc.private" value="false" />
     <property name="annotation.processing.processors.list" value="" />
-    <property name="build.test.classes.dir" value="build/test/classes" />
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
+    <property name="build.test.classes.dir" value="build/test/classes" />
     <property name="libs.MySQLDriver.javadoc" value="" />
     <property name="test.binaryexcludes" value="" />
     <property name="netbeans.dynamic.classpath" value="/usr/share/netbeans/8.1/platform/core/asm-all-5.0.1.jar:/usr/share/netbeans/8.1/platform/core/org-openide-filesystems.jar:/usr/share/netbeans/8.1/platform/core/core-base.jar:/usr/share/netbeans/8.1/platform/core/org-openide-filesystems-compat8.jar:/usr/share/netbeans/8.1/platform/core/core.jar:/usr/share/netbeans/8.1/platform/core/org-netbeans-libs-asm.jar:/usr/share/netbeans/8.1/nb/core/org-netbeans-upgrader.jar:/usr/share/netbeans/8.1/nb/core/locale/core_nb.jar" />
     <property name="libs.beans-binding.javadoc" value="" />
     <property name="platform.active" value="default_platform" />
     <property name="ap.cmd.line.internal" value="" />
-    <property name="javac.includes.binary" value="/home/primoz/tk_last/tk-dn02/OsnovaKoncno/build/test/classes/Drevo23Test.class" />
     <property name="jdkBug6558476" value="false" />
     <property name="java.failonerror" value="true" />
     <property name="http.nonProxyHosts" value="localhost|127.0.0.1|debian" />
     <property name="libs.junit_4.javadoc" value="" />
     <property name="endorsed.classpath" value="" />
-    <property name="javac.includes" value="Drevo23Test.java" />
     <property name="netbeans.autoupdate.country" value="US" />
     <property name="libs.beans-binding.maven-pom" value="" />
     <property name="javadoc.encoding" value="UTF-8" />
@@ -179,14 +177,14 @@
     <property name="libs.PostgreSQLDriver.classpath" value="/usr/share/netbeans/8.1/ide/modules/ext/postgresql-9.2-1002.jdbc4.jar" />
     <property name="jnlp.signing.keystore" value="" />
     <property name="junit.forkmode" value="perTest" />
-    <property name="test.binarytestincludes" value="" />
     <property name="libs.junit_4.classpath" value="/usr/share/netbeans/8.1/platform/modules/ext/junit-4.12.jar" />
-    <property name="build.dir" value="build" />
+    <property name="test.binarytestincludes" value="" />
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64" />
+    <property name="build.dir" value="build" />
     <property name="application.title" value="Seznami" />
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers" />
-    <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment" />
     <property name="libs.testng.classpath" value="/usr/share/netbeans/8.1/platform/modules/ext/testng-6.8.1-dist.jar" />
+    <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment" />
     <property name="libs.jpa20-persistence.javadoc" value="" />
     <property name="javadoc.encoding.used" value="UTF-8" />
     <property name="javadoc.windowtitle" value="" />
@@ -194,63 +192,59 @@
     <property name="netbeans.productversion" value="NetBeans IDE 8.1 (Build 20170419-debian-8.1)" />
     <property name="libs.hamcrest.classpath" value="/usr/share/netbeans/8.1/platform/modules/ext/hamcrest-core-1.3.jar" />
     <property name="annotation.processing.enabled" value="true" />
-    <property name="run.jvmargs.ide" value="" />
     <property name="libs.JAXB-ENDORSED.maven-pom" value="" />
+    <property name="run.jvmargs.ide" value="" />
     <property name="build.generated.sources.dir" value="build/generated-sources" />
     <property name="nb.junit.single" value="false" />
-    <property name="run.jvmargs" value="-XX:-UseSplitVerifier  -Xmx4m" />
+    <property name="run.jvmargs" value="-XX:-UseSplitVerifier  -Xmx4m  -javaagent:&quot;/home/primoz/.netbeans/8.1/modules/ext/jacocoagent.jar&quot;=includes=*,destfile=&quot;/home/primoz/tk_last/tk-dn02/OsnovaKoncno/jacoco.exec-24746703970209&quot;" />
     <property name="build.compiler.emacs" value="true" />
     <property name="ant.project.name" value="Seznami" />
     <property name="libs.swing-layout.classpath" value="/usr/share/netbeans/8.1/platform/modules/ext/swing-layout-1.0.4.jar" />
-    <property name="org.openide.awt.SwingBrowserImpl.do-not-block-awt" value="false" />
     <property name="java.vm.specification.version" value="1.8" />
     <property name="work.dir" value="/home/primoz/tk_last/tk-dn02/OsnovaKoncno" />
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit" />
     <property name="javadoc.use" value="true" />
     <property name="sun.cpu.isalist" value="" />
     <property name="java.ext.dirs" value="/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext:/usr/java/packages/lib/ext" />
-    <property name="os.version" value="4.9.0-3-amd64" />
     <property name="netbeans.default_userdir_root" value="/home/primoz/.netbeans" />
+    <property name="os.version" value="4.9.0-3-amd64" />
     <property name="jna.loaded" value="true" />
     <property name="excludes" value="" />
-    <property name="user.home" value="/home/primoz" />
     <property name="jnlp.descriptor" value="application" />
+    <property name="user.home" value="/home/primoz" />
     <property name="org.xml.sax.driver" value="com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser" />
-    <property name="test.class" value="Drevo23Test" />
     <property name="java.vm.vendor" value="Oracle Corporation" />
     <property name="libs.absolutelayout.maven-pom" value="" />
     <property name="user.dir" value="/home/primoz/tk_last/tk-dn02/OsnovaKoncno" />
     <property name="debug-transport" value="dt_socket" />
     <property name="application.args" value="" />
-    <property name="javac.includesfile.binary" value="/home/primoz/tk_last/tk-dn02/OsnovaKoncno/null990536269" />
     <property name="sun.cpu.endian" value="little" />
     <property name="junit.selected.version" value="4" />
     <property name="compile.on.save" value="false" />
-    <property name="libs.eclipselinkmodelgen.javadoc" value="" />
     <property name="endorsed.classpath.cmd.line.arg" value="" />
+    <property name="libs.eclipselinkmodelgen.javadoc" value="" />
     <property name="jar.index" value="false" />
+    <property name="jnlp.offline-allowed" value="false" />
     <property name="libs.MySQLDriver.src" value="" />
     <property name="java.vm.version" value="25.131-b11" />
-    <property name="jnlp.offline-allowed" value="false" />
     <property name="test.binaryincludes" value="&lt;nothing&gt;" />
     <property name="annotation.processing.processor.options" value="" />
-    <property name="java.class.path" value="/home/primoz/tk_last/tk-dn02/OsnovaKoncno/build/classes:/usr/share/netbeans/8.1/platform/modules/ext/junit-4.12.jar:/usr/share/netbeans/8.1/platform/modules/ext/hamcrest-core-1.3.jar:/home/primoz/tk_last/tk-dn02/OsnovaKoncno/build/test/classes:/usr/share/netbeans/8.1/java/ant/lib/junit.jar:/usr/share/netbeans/8.1/java/ant/lib/ant-launcher.jar:/usr/share/netbeans/8.1/java/ant/lib/ant.jar:/usr/share/netbeans/8.1/java/ant/lib/ant-junit.jar:/usr/share/netbeans/8.1/java/ant/lib/ant-junit4.jar" />
-    <property name="nb.internal.action.name" value="run.single" />
+    <property name="java.class.path" value="/home/primoz/tk_last/tk-dn02/OsnovaKoncno/build/classes:/usr/share/netbeans/8.1/platform/modules/ext/junit-4.12.jar:/usr/share/netbeans/8.1/platform/modules/ext/hamcrest-core-1.3.jar:/home/primoz/tk_last/tk-dn02/OsnovaKoncno/build/test/classes:/usr/share/netbeans/8.1/java/ant/lib/junit.jar:/usr/share/netbeans/8.1/java/ant/lib/ant-launcher.jar:/usr/share/netbeans/8.1/java/ant/lib/ant.jar:/usr/share/netbeans/8.1/java/ant/lib/ant-junit.jar:/usr/share/netbeans/8.1/java/ant/lib/ant-junit4.jar:/home/primoz/.netbeans/8.1/modules/ext/jacocoagent.jar" />
     <property name="os.arch" value="amd64" />
     <property name="javac.deprecation" value="false" />
     <property name="libs.jpa20-persistence.maven-pom" value="" />
     <property name="build.classes.excludes" value="**/*.java,**/*.form" />
     <property name="dist.dir" value="dist" />
-    <property name="netbeans.user" value="/home/primoz/.netbeans/8.1" />
     <property name="debug.classpath" value=":build/classes" />
+    <property name="netbeans.user" value="/home/primoz/.netbeans/8.1" />
     <property name="sun.java.launcher" value="SUN_STANDARD" />
     <property name="jar.index.metainf" value="false" />
     <property name="jnlp.codebase.type" value="no.codebase" />
     <property name="platform.java" value="/usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java" />
     <property name="annotation.processing.enabled.in.editor" value="false" />
     <property name="ant.core.lib" value="/usr/share/netbeans/8.1/java/ant/lib/ant.jar" />
-    <property name="jnlp.signed" value="false" />
     <property name="java.vm.specification.vendor" value="Oracle Corporation" />
+    <property name="jnlp.signed" value="false" />
     <property name="do.depend" value="false" />
     <property name="file.separator" value="/" />
     <property name="java.runtime.version" value="1.8.0_131-8u131-b11-2-b11" />
@@ -259,10 +253,9 @@
     <property name="javax.accessibility.assistive_technologies" value="org.GNOME.Accessibility.AtkWrapper" />
     <property name="nb.junit.batch" value="true" />
     <property name="libs.beans-binding.classpath" value="/usr/share/netbeans/8.1/java/modules/ext/beansbinding-1.2.1.jar" />
-    <property name="main.class" value="PodatkovnaBaza" />
     <property name="have.tests" value="true" />
+    <property name="main.class" value="PodatkovnaBaza" />
     <property name="jar.archive.disabled" value="false" />
-    <property name="test.includes" value="Drevo23Test.java" />
     <property name="libs.JWSAntTasks.maven-pom" value="" />
     <property name="jnidispatch.path" value="/usr/lib/x86_64-linux-gnu/jni/libjnidispatch.system.so" />
     <property name="java.util.logging.config.class" value="org.netbeans.core.startup.TopLogging" />
@@ -271,24 +264,99 @@
     <property name="user.country" value="US" />
     <property name="javadoc.notree" value="false" />
     <property name="default.javac.target" value="1.8" />
-    <property name="javac.classpath" value="" />
     <property name="javadoc.additionalparam" value="" />
+    <property name="javac.classpath" value="" />
     <property name="build.classes.dir" value="build/classes" />
     <property name="libs.swing-layout.src" value="" />
     <property name="libs.swing-layout.javadoc" value="" />
     <property name="java.vendor" value="Oracle Corporation" />
     <property name="javac.target" value="1.7" />
-    <property name="org.openide.awt.ActionReference.completion" value="org.netbeans.modules.apisupport.project.layers.PathCompletions" />
     <property name="libs.eclipselink.classpath" value="/usr/share/netbeans/8.1/java/modules/ext/eclipselink/eclipselink.jar:/usr/share/netbeans/8.1/java/modules/ext/eclipselink/javax.persistence_2.1.0.v201304241213.jar:/usr/share/netbeans/8.1/java/modules/ext/eclipselink/org.eclipse.persistence.jpa.jpql_2.5.2.v20140319-9ad6abd.jar" />
+    <property name="org.openide.awt.ActionReference.completion" value="org.netbeans.modules.apisupport.project.layers.PathCompletions" />
     <property name="runtime.encoding" value="UTF-8" />
     <property name="java.specification.version" value="1.8" />
     <property name="libs.JWSAntTasks.javadoc" value="" />
-    <property name="mkdist.disabled" value="true" />
     <property name="sun.arch.data.model" value="64" />
+    <property name="mkdist.disabled" value="true" />
   </properties>
-  <testcase classname="Drevo23Test" name="testSaveMultipleStudents" time="0.009" />
+  <testcase classname="Drevo23Test" name="elementAlreadyIn23" time="0.006" />
+  <testcase classname="Drevo23Test" name="testIsntEmptyTrue" time="0.0" />
+  <testcase classname="Drevo23Test" name="testInNoneTreeSize" time="0.0" />
+  <testcase classname="Drevo23Test" name="testExistsTrueThree" time="0.001" />
+  <testcase classname="Drevo23Test" name="testAlotElemsRightisMid" time="0.001" />
+  <testcase classname="Drevo23Test" name="testNoGetFirst" time="0.0" />
+  <testcase classname="Drevo23Test" name="testSeachStudentByName" time="0.001" />
+  <testcase classname="Drevo23Test" name="testDepthBigTree" time="0.0" />
+  <testcase classname="Drevo23Test" name="testGetFirst" time="0.0" />
+  <testcase classname="Drevo23Test" name="testSaveMultipleStudents" time="0.002" />
+  <testcase classname="Drevo23Test" name="testRemoveFromBiggerTreeLeft" time="0.001" />
+  <testcase classname="Drevo23Test" name="testDepthSmallerTree" time="0.0" />
+  <testcase classname="Drevo23Test" name="testSplitRightMediRight" time="0.0" />
+  <testcase classname="Drevo23Test" name="testRemoveFirstNoElems" time="0.0" />
+  <testcase classname="Drevo23Test" name="testSplitSpecialLeftRightisMedi" time="0.001" />
+  <testcase classname="Drevo23Test" name="addOne23" time="0.001" />
+  <testcase classname="Drevo23Test" name="testReset" time="0.001" />
+  <testcase classname="Drevo23Test" name="testSplitSpecialLeftLeftisMedi" time="0.001" />
+  <testcase classname="Drevo23Test" name="testSplitSpecialRight" time="0.0" />
+  <testcase classname="Drevo23Test" name="testIsEmptyTrue" time="0.0" />
+  <testcase classname="Drevo23Test" name="testDoesExistDTwoLeftMoreFix" time="0.0" />
+  <testcase classname="Drevo23Test" name="testDepthNoChildrenTree" time="0.001" />
   <testcase classname="Drevo23Test" name="init23Tree" time="0.0" />
-  <testcase classname="Drevo23Test" name="testRestore" time="0.006" />
+  <testcase classname="Drevo23Test" name="testInSmallTreeSize" time="0.0" />
+  <testcase classname="Drevo23Test" name="testAddStudent" time="0.0" />
+  <testcase classname="Drevo23Test" name="removeMultipleElems" time="0.0" />
+  <testcase classname="Drevo23Test" name="testBigTreeMiddleE" time="0.0" />
+  <testcase classname="Drevo23Test" name="testDoesExistDTwoLeftMore" time="0.001" />
+  <testcase classname="Drevo23Test" name="addTwoLeft23" time="0.0" />
+  <testcase classname="Drevo23Test" name="testDoesExistDTwoRightMore" time="0.0" />
+  <testcase classname="Drevo23Test" name="testRemoveFromBigTree" time="0.001" />
+  <testcase classname="Drevo23Test" name="removeisNull" time="0.0" />
+  <testcase classname="Drevo23Test" name="testExistsTrueOne" time="0.0" />
+  <testcase classname="Drevo23Test" name="testExistsTrueTwo" time="0.0" />
+  <testcase classname="Drevo23Test" name="testDoesExistDTwoRight" time="0.0" />
+  <testcase classname="Drevo23Test" name="testInTreeRightBigExist" time="0.0" />
+  <testcase classname="Drevo23Test" name="testDoesExistDOneRight" time="0.0" />
+  <testcase classname="Drevo23Test" name="testSplitSpecialRightLeftisMedi" time="0.001" />
+  <testcase classname="Drevo23Test" name="addFourRight" time="0.0" />
+  <testcase classname="Drevo23Test" name="addThreeRight231" time="0.0" />
+  <testcase classname="Drevo23Test" name="testInBigTwoTreeSize" time="0.001" />
+  <testcase classname="Drevo23Test" name="testNotIntreeExist" time="0.0" />
+  <testcase classname="Drevo23Test" name="testDoesNotExistRemove" time="0.0" />
+  <testcase classname="Drevo23Test" name="addThreeLeft123" time="0.0" />
+  <testcase classname="Drevo23Test" name="addThreeLeft234" time="0.0" />
+  <testcase classname="Drevo23Test" name="testAddElemNewDepth" time="0.0" />
+  <testcase classname="Drevo23Test" name="testAddElemDepth" time="0.001" />
+  <testcase classname="Drevo23Test" name="testInBigTreeSize" time="0.0" />
+  <testcase classname="Drevo23Test" name="testRestore" time="0.005" />
+  <testcase classname="Drevo23Test" name="testRemoveFirstBigTree" time="0.0" />
+  <testcase classname="Drevo23Test" name="testAsListEmpty" time="0.001" />
+  <testcase classname="Drevo23Test" name="testAlotElemsLeftisMid" time="0.0" />
+  <testcase classname="Drevo23Test" name="testDoesExistDTwoRightMoreFix" time="0.001" />
+  <testcase classname="Drevo23Test" name="testSplitRightMediLeft" time="0.001" />
+  <testcase classname="Drevo23Test" name="testDepthTinyTree" time="0.001" />
+  <testcase classname="Drevo23Test" name="testDsntExist" time="0.0" />
+  <testcase classname="Drevo23Test" name="testDoesExistDOneLeft" time="0.0" />
+  <testcase classname="Drevo23Test" name="testSeachStudentByIDMultiple" time="0.001" />
+  <testcase classname="Drevo23Test" name="testGetFirstMiddle" time="0.001" />
+  <testcase classname="Drevo23Test" name="testRemoveFromBiggerTree" time="0.0" />
+  <testcase classname="Drevo23Test" name="asListMiddle" time="0.0" />
+  <testcase classname="Drevo23Test" name="testInOneTreeSize" time="0.001" />
+  <testcase classname="Drevo23Test" name="addTwoRight23" time="0.0" />
+  <testcase classname="Drevo23Test" name="asListUpper" time="0.0" />
+  <testcase classname="Drevo23Test" name="testDoesExistDTwoLeft" time="0.0" />
+  <testcase classname="Drevo23Test" name="testAlotElemsEisMid" time="0.0" />
+  <testcase classname="Drevo23Test" name="addLeftRight" time="0.001" />
+  <testcase classname="Drevo23Test" name="testBigTreeMiddleRight" time="0.0" />
+  <testcase classname="Drevo23Test" name="addThreeRight23" time="0.0" />
+  <testcase classname="Drevo23Test" name="testBigTreeMiddleLeft" time="0.001" />
+  <testcase classname="Drevo23Test" name="testExistsTrueFour" time="0.0" />
+  <testcase classname="Drevo23Test" name="testSplitSpecialRightEisMedi" time="0.001" />
+  <testcase classname="Drevo23Test" name="testSeachStudentByID" time="0.0" />
+  <testcase classname="Drevo23Test" name="testSplitSpecialLeftEisMedi" time="0.0" />
+  <testcase classname="Drevo23Test" name="testAsListBig" time="0.001" />
+  <testcase classname="Drevo23Test" name="testSplitSpecialRightRightisMedi" time="0.0" />
+  <testcase classname="Drevo23Test" name="testRemoveFirstTwoElems" time="0.0" />
+  <testcase classname="Drevo23Test" name="testRemoveFirstOneElems" time="0.001" />
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

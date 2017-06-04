@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>SeznamiUV.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;Seznami&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">SeznamiUV.java</span></div><h1>SeznamiUV.java</h1><pre class="source lang-java linenums">
+import java.util.HashMap;
+import java.util.StringTokenizer;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+
+
+public class SeznamiUV {
+
+    Drevo23 &lt;Studenti&gt;dv;
+    
+    
+<span class="fc" id="L15">    static String memoryError = &quot;Error: not enough memory, operation failed&quot;;</span>
+   
+<span class="fc" id="L17">    public SeznamiUV() {</span>
+<span class="fc" id="L18">        dv = new Drevo23(new StudentPrimerjajPoImenu&lt;&gt;());</span>
+<span class="fc" id="L19">    }</span>
+    public Studenti promptUserToAdd() throws IOException{
+<span class="nc" id="L21">        String ID=&quot;&quot;;</span>
+<span class="nc" id="L22">        String fname=&quot;&quot;;</span>
+<span class="nc" id="L23">        String lname=&quot;&quot;;</span>
+<span class="nc" id="L24">        double avg_grade=0.0;</span>
+        String input;
+<span class="nc" id="L26">        BufferedReader br_ID = new BufferedReader(new InputStreamReader(System.in));</span>
+<span class="nc" id="L27">        System.out.print(&quot;add&gt; Student ID: &quot;);</span>
+<span class="nc" id="L28">            input = br_ID.readLine();</span>
+<span class="nc bnc" id="L29" title="All 4 branches missed.">            if(!input.matches(&quot;[0-9]+&quot;) &amp;&amp; input.length()&lt;9){</span>
+<span class="nc" id="L30">                return null;</span>
+            }
+<span class="nc" id="L32">            ID=input;</span>
+<span class="nc" id="L33">        BufferedReader br_name = new BufferedReader(new InputStreamReader(System.in));</span>
+<span class="nc" id="L34">        System.out.print(&quot;add&gt; First name: &quot;);</span>
+<span class="nc" id="L35">            input = br_name.readLine();</span>
+<span class="nc bnc" id="L36" title="All 2 branches missed.">            if(!input.matches(&quot;[a-zA-Z ]+&quot;)){</span>
+<span class="nc" id="L37">                return null;</span>
+            }
+<span class="nc" id="L39">            fname=input;</span>
+<span class="nc" id="L40">        BufferedReader br_surname = new BufferedReader(new InputStreamReader(System.in));</span>
+<span class="nc" id="L41">        System.out.print(&quot;add&gt; Last name: &quot;);</span>
+<span class="nc" id="L42">            input = br_surname.readLine();</span>
+<span class="nc bnc" id="L43" title="All 2 branches missed.">            if(!input.matches(&quot;[a-zA-Z]+&quot;)){</span>
+<span class="nc" id="L44">                return null;</span>
+            }
+<span class="nc" id="L46">            lname=input;</span>
+<span class="nc" id="L47">        BufferedReader br_num = new BufferedReader(new InputStreamReader(System.in));</span>
+<span class="nc" id="L48">        System.out.print(&quot;add&gt; Avg. grade: &quot;);</span>
+<span class="nc" id="L49">            input = br_num.readLine();</span>
+<span class="nc bnc" id="L50" title="All 2 branches missed.">            if(!input.matches(&quot;[1-9].[0-9]&quot;)){</span>
+<span class="nc bnc" id="L51" title="All 2 branches missed.">                if(!input.matches(&quot;[1-9][0-9]&quot;))</span>
+<span class="nc bnc" id="L52" title="All 2 branches missed.">                   if(!input.matches(&quot;10.0&quot;))</span>
+<span class="nc" id="L53">                    return null;</span>
+            }
+<span class="nc" id="L55">            avg_grade=Double.parseDouble(input);</span>
+<span class="nc" id="L56">            return new Studenti(fname, lname, ID, avg_grade);</span>
+    }
+    public String promptUserToDelete() throws IOException{
+<span class="nc" id="L59">        String fname=&quot;&quot;;</span>
+<span class="nc" id="L60">        String lname=&quot;&quot;;</span>
+        String input;
+        String result;
+<span class="nc" id="L63">        BufferedReader br_name = new BufferedReader(new InputStreamReader(System.in));</span>
+<span class="nc" id="L64">        System.out.print(&quot;remove&gt; First name: &quot;);</span>
+<span class="nc" id="L65">            input = br_name.readLine();</span>
+<span class="nc bnc" id="L66" title="All 2 branches missed.">            if(!input.matches(&quot;[a-zA-Z ]+&quot;)){</span>
+<span class="nc" id="L67">                return &quot;Invalid input data.&quot;;</span>
+            }
+<span class="nc" id="L69">            fname=input;</span>
+<span class="nc" id="L70">        BufferedReader br_lname= new BufferedReader(new InputStreamReader(System.in));</span>
+<span class="nc" id="L71">        System.out.print(&quot;remove&gt; Last name: &quot;);</span>
+<span class="nc" id="L72">            input = br_lname.readLine();</span>
+<span class="nc bnc" id="L73" title="All 2 branches missed.">            if(!input.matches(&quot;[a-zA-Z ]+&quot;)){</span>
+<span class="nc" id="L74">                return &quot;Invalid input data.&quot;;</span>
+            }
+<span class="nc" id="L76">            lname=input;</span>
+<span class="nc" id="L77">        Studenti tmp = dv.remove(new Studenti(fname, lname, &quot;&quot;, 0));</span>
+<span class="nc bnc" id="L78" title="All 2 branches missed.">        if(tmp!=null){</span>
+<span class="nc" id="L79">            return tmp.toString();</span>
+        }
+        else{
+<span class="nc" id="L82">            return null;</span>
+        }
+    }
+    public String promptUserToSearch() throws IOException{
+<span class="nc" id="L86">        String fname=&quot;&quot;;</span>
+<span class="nc" id="L87">        String lname=&quot;&quot;;</span>
+        String input;
+        String result;
+<span class="nc" id="L90">        BufferedReader br_name = new BufferedReader(new InputStreamReader(System.in));</span>
+<span class="nc" id="L91">        System.out.print(&quot;search&gt; First name: &quot;);</span>
+<span class="nc" id="L92">            input = br_name.readLine();</span>
+<span class="nc bnc" id="L93" title="All 2 branches missed.">            if(!input.matches(&quot;[a-zA-Z ]+&quot;)){</span>
+<span class="nc" id="L94">                return &quot;Invalid input data.&quot;;</span>
+            }
+<span class="nc" id="L96">            fname=input;</span>
+<span class="nc" id="L97">        BufferedReader br_lname= new BufferedReader(new InputStreamReader(System.in));</span>
+<span class="nc" id="L98">        System.out.print(&quot;search&gt; Last name: &quot;);</span>
+<span class="nc" id="L99">            input = br_lname.readLine();</span>
+<span class="nc bnc" id="L100" title="All 2 branches missed.">            if(!input.matches(&quot;[a-zA-Z ]+&quot;)){</span>
+<span class="nc" id="L101">                return &quot;Invalid input data.&quot;;</span>
+            }
+<span class="nc" id="L103">            lname=input;</span>
+<span class="nc" id="L104">        Studenti tmp = dv.search(new Studenti(fname, lname, &quot;&quot;, 0));</span>
+<span class="nc bnc" id="L105" title="All 2 branches missed.">        if(tmp!=null){</span>
+<span class="nc" id="L106">            return tmp.toString();</span>
+        }
+        else{
+<span class="nc" id="L109">            return null;</span>
+        }
+    }
+    public String assemblePrint(){
+<span class="nc" id="L113">        String endstring=&quot;&quot;;</span>
+        
+<span class="nc" id="L115">        int num_of_students = dv.size();</span>
+<span class="nc bnc" id="L116" title="All 2 branches missed.">        if(num_of_students==0){</span>
+<span class="nc" id="L117">            return &quot;&gt;&gt; No. of students: 0&quot;;</span>
+        }
+<span class="nc" id="L119">        endstring+=&quot;&gt;&gt; No. of students&quot;+endstring+&quot;\n&quot;;</span>
+        
+<span class="nc" id="L121">        List &lt;Studenti&gt; al = dv.asList();</span>
+<span class="nc" id="L122">        al.sort(new Comparator&lt;Studenti&gt;() {</span>
+            @Override
+            public int compare(Studenti o1, Studenti o2) {
+<span class="nc" id="L125">                return o1.priimek.compareTo(o2.priimek);</span>
+            }
+        });
+        
+<span class="nc bnc" id="L129" title="All 2 branches missed.">        for(Studenti s : al){</span>
+<span class="nc" id="L130">            endstring+=&quot;\t&quot;+s.ID+&quot; | &quot;+s.priimek+&quot; | &quot;+s.ime+&quot; | &quot;+s.povpOcena+&quot;\n&quot;;</span>
+<span class="nc" id="L131">        }</span>
+<span class="nc" id="L132">        return endstring;</span>
+    }
+    public String promptUserReset()throws IOException{
+<span class="nc" id="L135">        BufferedReader br_name = new BufferedReader(new InputStreamReader(System.in));</span>
+        String input;
+<span class="nc" id="L137">        System.out.print(&quot;reset&gt; Are you sure (y|n):&quot;);</span>
+<span class="nc" id="L138">            input=br_name.readLine();</span>
+<span class="nc bnc" id="L139" title="All 2 branches missed.">        if(input.equals(&quot;y&quot;)){</span>
+<span class="nc" id="L140">            dv.reset();</span>
+        }
+<span class="nc bnc" id="L142" title="All 2 branches missed.">        else if(input.equals(&quot;n&quot;)){</span>
+<span class="nc" id="L143">            return &quot;Whats the point of this&quot;;</span>
+        }
+<span class="nc" id="L145">        return null;</span>
+        
+    }
+    
+    
+    public String processInput(String input) {
+        String token;
+<span class="fc" id="L152">        String result = &quot;OK&quot;;</span>
+<span class="fc" id="L153">        String[] params = input.split(&quot; &quot;);</span>
+
+        //moramo preverjati za primer praznega stringa
+<span class="pc bpc" id="L156" title="1 of 2 branches missed.">        if (params.length == 0) {</span>
+<span class="nc" id="L157">            return &quot;Error: enter command&quot;;</span>
+        }
+        else{
+<span class="fc" id="L160">            token = params[0];</span>
+        }
+<span class="fc bfc" id="L162" title="All 2 branches covered.">        if(token.equals(&quot;exit&quot;)){</span>
+<span class="fc" id="L163">            return &quot;Goodbye.&quot;;</span>
+        }
+        try {
+            //Napis se teste za to, FAKING PARAMSE MORS GLEDAT KER JE TAKO ZASTAVLJENA NALOGA
+            //nvm baje so za to sistemski testi
+<span class="fc bfc" id="L168" title="All 2 branches covered.">            if(params.length&gt;3){</span>
+<span class="pc bpc" id="L169" title="1 of 4 branches missed.">                if(token.equals(&quot;add&quot;) &amp;&amp; params.length==5){</span>
+<span class="fc" id="L170">                    Studenti curStudenti = new Studenti(params[2], params[3], params[1], Double.parseDouble(params[4]));</span>
+<span class="fc bfc" id="L171" title="All 2 branches covered.">                    if(!dv.exists(curStudenti)){</span>
+<span class="fc" id="L172">                    dv.add(curStudenti);</span>
+<span class="fc" id="L173">                    result = &quot;OK&quot;;</span>
+                }
+                else{
+<span class="fc" id="L176">                    result = &quot;Student already exists.&quot;;</span>
+                }
+<span class="fc" id="L178">                }</span>
+                else{
+<span class="fc" id="L180">                    return &quot;Invalid argument&quot;;</span>
+                }
+<span class="fc" id="L182">                return result;</span>
+            }
+                
+<span class="fc bfc" id="L185" title="All 2 branches covered.">            if(params.length==2){</span>
+<span class="pc bpc" id="L186" title="1 of 2 branches missed.">                if(token.equals(&quot;remove&quot;)){</span>
+<span class="fc" id="L187">                    String sifra = params[1];</span>
+<span class="pc bpc" id="L188" title="1 of 2 branches missed.">                    if(!sifra.matches(&quot;[0-9]+&quot;)){</span>
+<span class="nc" id="L189">                        return &quot;Invalid input data.&quot;;</span>
+                    }
+<span class="fc" id="L191">                    Studenti temp = dv.remove(new Studenti(&quot;&quot;, &quot;&quot;, sifra, 0));</span>
+<span class="pc bpc" id="L192" title="1 of 2 branches missed.">                    if(temp!=null){</span>
+<span class="fc" id="L193">                        return temp.toString();</span>
+                    }
+                    else{
+<span class="nc" id="L196">                        return &quot;Student does not exist.&quot;;</span>
+                    }
+                }
+<span class="nc bnc" id="L199" title="All 2 branches missed.">                else if(token.equals(&quot;search&quot;)){</span>
+<span class="nc" id="L200">                    String sifra = params[1];</span>
+<span class="nc bnc" id="L201" title="All 2 branches missed.">                    if(!sifra.matches(&quot;[0-9]+&quot;)){</span>
+<span class="nc" id="L202">                        return &quot;Invalid input data.&quot;;</span>
+                    }
+<span class="nc" id="L204">                    Studenti temp = dv.search(new Studenti(&quot;&quot;, &quot;&quot;, sifra, 0));</span>
+<span class="nc bnc" id="L205" title="All 2 branches missed.">                    if(temp!=null){</span>
+<span class="nc" id="L206">                        return temp.toString();</span>
+                    }
+                    else{
+<span class="nc" id="L209">                        return &quot;Student does not exist.&quot;;</span>
+                    }
+                }
+<span class="nc bnc" id="L212" title="All 2 branches missed.">                else if(token.equals(&quot;save&quot;)){</span>
+<span class="nc" id="L213">                    String filename=params[1];</span>
+<span class="nc" id="L214">                    dv.save(new FileOutputStream(new File(filename)));</span>
+<span class="nc" id="L215">                    return &quot;OK&quot;;</span>
+                }
+<span class="nc bnc" id="L217" title="All 2 branches missed.">                else if(token.equals(&quot;restore&quot;)){</span>
+<span class="nc" id="L218">                    String filename=params[1];</span>
+<span class="nc" id="L219">                    dv.restore(new FileInputStream(new File(filename)));</span>
+<span class="nc" id="L220">                    return &quot;OK&quot;;</span>
+
+                }
+            }
+<span class="pc bpc" id="L224" title="1 of 2 branches missed.">            if (token.equals(&quot;add&quot;)){</span>
+<span class="nc" id="L225">                Studenti curStudent = promptUserToAdd();</span>
+<span class="nc bnc" id="L226" title="All 2 branches missed.">                if(curStudent==null){</span>
+<span class="nc" id="L227">                    return &quot;Invalid input data&quot;;</span>
+                }
+<span class="nc bnc" id="L229" title="All 2 branches missed.">                if(!dv.exists(curStudent)){</span>
+<span class="nc" id="L230">                    dv.add(curStudent);</span>
+<span class="nc" id="L231">                    result = &quot;OK&quot;;</span>
+                }
+                else{
+<span class="nc" id="L234">                    result = &quot;Student already exists.&quot;;</span>
+                }
+<span class="nc" id="L236">            }</span>
+<span class="pc bpc" id="L237" title="1 of 2 branches missed.">            else if(token.equals(&quot;remove&quot;)){</span>
+<span class="nc" id="L238">                result = promptUserToDelete();</span>
+<span class="nc bnc" id="L239" title="All 2 branches missed.">                if(result==null){</span>
+<span class="nc" id="L240">                    return &quot;Student does not exist.&quot;;</span>
+                }
+<span class="nc bnc" id="L242" title="All 2 branches missed.">                if(result.equals(&quot;Invalid input data.&quot;)){</span>
+<span class="nc" id="L243">                    return &quot;Invalid input data.&quot;;</span>
+                }
+            }
+<span class="pc bpc" id="L246" title="1 of 2 branches missed.">            else if(token.equals(&quot;search&quot;)){</span>
+<span class="nc" id="L247">                result = promptUserToSearch();</span>
+<span class="nc bnc" id="L248" title="All 2 branches missed.">                if(result==null){</span>
+<span class="nc" id="L249">                    return &quot;Student does not exist.&quot;;</span>
+                }
+<span class="nc bnc" id="L251" title="All 2 branches missed.">                if(result.equals(&quot;Invalid input data.&quot;)){</span>
+<span class="nc" id="L252">                    return &quot;Invalid input data.&quot;;</span>
+                }
+            }
+<span class="pc bpc" id="L255" title="1 of 2 branches missed.">            else if(token.equals(&quot;print&quot;)){</span>
+<span class="nc" id="L256">                return assemblePrint();</span>
+            }
+<span class="pc bpc" id="L258" title="1 of 2 branches missed.">            else if(token.equals(&quot;count&quot;)){</span>
+<span class="nc" id="L259">                return &quot;&gt;&gt; No. of students:&quot;+dv.size();</span>
+            }
+<span class="pc bpc" id="L261" title="1 of 2 branches missed.">            else if(token.equals(&quot;reset&quot;)){</span>
+<span class="nc" id="L262">                promptUserReset();</span>
+<span class="nc bnc" id="L263" title="All 2 branches missed.">                if(result==null){</span>
+<span class="nc" id="L264">                    return &quot;Invalid input data.&quot;;</span>
+                }
+<span class="nc" id="L266">                result = &quot;OK&quot;;</span>
+            }
+            else{
+<span class="fc" id="L269">                result = &quot;Invalid command.&quot;;</span>
+            }
+            
+                
+
+<span class="nc" id="L274">        } catch (UnsupportedOperationException e) {</span>
+<span class="nc" id="L275">            result = &quot;Error: Operation not supported&quot;;</span>
+<span class="nc" id="L276">        } catch (IllegalArgumentException e) {</span>
+<span class="nc" id="L277">            result = &quot;Error: Duplicated entry&quot;;</span>
+<span class="nc" id="L278">        } catch (java.util.NoSuchElementException e) {</span>
+<span class="nc" id="L279">            result = &quot;Error: structure is empty&quot;;</span>
+<span class="nc" id="L280">        }   catch (OutOfMemoryError e) {</span>
+<span class="nc" id="L281">            return memoryError;</span>
+        }
+<span class="nc" id="L283">        catch (ClassNotFoundException e) {</span>
+<span class="nc" id="L284">            System.out.println(&quot;I/O Error:&quot;+e.toString());</span>
+<span class="nc" id="L285">        }catch (IOException e) {</span>
+<span class="nc" id="L286">            System.out.println(e.toString());</span>
+<span class="pc" id="L287">        }</span>
+
+<span class="fc" id="L289">        return result;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>
