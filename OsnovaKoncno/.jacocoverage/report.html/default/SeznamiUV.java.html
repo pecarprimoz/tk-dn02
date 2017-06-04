@@ -166,134 +166,147 @@ public class SeznamiUV {
 <span class="fc bfc" id="L166" title="All 2 branches covered.">        if(token.equals(&quot;exit&quot;)){</span>
 <span class="fc" id="L167">            return &quot;Goodbye.&quot;;</span>
         }
+        
         try {
-            //Napis se teste za to, FAKING PARAMSE MORS GLEDAT KER JE TAKO ZASTAVLJENA NALOGA
-            //nvm baje so za to sistemski testi
-<span class="fc bfc" id="L172" title="All 2 branches covered.">            if(params.length&gt;3){</span>
-<span class="pc bpc" id="L173" title="1 of 4 branches missed.">                if(token.equals(&quot;add&quot;) &amp;&amp; params.length==5){</span>
-<span class="fc" id="L174">                    Studenti curStudenti = new Studenti(params[2], params[3], params[1], Double.parseDouble(params[4]));</span>
-<span class="fc bfc" id="L175" title="All 2 branches covered.">                    if(!dv.exists(curStudenti)){</span>
-<span class="fc" id="L176">                    dv.add(curStudenti);</span>
-<span class="fc" id="L177">                    result = &quot;OK&quot;;</span>
+<span class="fc bfc" id="L171" title="All 2 branches covered.">            if(token.equals(&quot;mockAdd&quot;)){</span>
+<span class="nc" id="L172">                dv.mockAdd(new Studenti(&quot;&quot;, &quot;&quot;, &quot;&quot;, 0));</span>
+            }
+<span class="fc bfc" id="L174" title="All 2 branches covered.">            else if(token.equals(&quot;mockNoElement&quot;)){</span>
+<span class="nc" id="L175">                dv.mockNoElement(new Studenti(&quot;&quot;, &quot;&quot;, &quot;&quot;, 0));</span>
+            }
+<span class="fc bfc" id="L177" title="All 2 branches covered.">            else if(token.equals(&quot;mockIO&quot;)){</span>
+<span class="nc" id="L178">                dv.mockIoEx(new Studenti(&quot;&quot;, &quot;&quot;, &quot;&quot;, 0));</span>
+            }
+            //za osebno testiranje
+<span class="fc bfc" id="L181" title="All 2 branches covered.">            if(params.length&gt;3){</span>
+                
+<span class="pc bpc" id="L183" title="1 of 4 branches missed.">                if(token.equals(&quot;add&quot;) &amp;&amp; params.length==5){</span>
+<span class="fc" id="L184">                    Studenti curStudenti = new Studenti(params[2], params[3], params[1], Double.parseDouble(params[4]));</span>
+<span class="fc bfc" id="L185" title="All 2 branches covered.">                    if(!dv.exists(curStudenti)){</span>
+<span class="fc" id="L186">                    dv.add(curStudenti);</span>
+<span class="fc" id="L187">                    result = &quot;OK&quot;;</span>
                 }
                 else{
-<span class="fc" id="L180">                    result = &quot;Student already exists.&quot;;</span>
+<span class="fc" id="L190">                    result = &quot;Student already exists.&quot;;</span>
                 }
-<span class="fc" id="L182">                }</span>
+<span class="fc" id="L192">                }</span>
                 else{
-<span class="fc" id="L184">                    return &quot;Invalid argument&quot;;</span>
+<span class="fc" id="L194">                    return &quot;Invalid argument&quot;;</span>
                 }
-<span class="fc" id="L186">                return result;</span>
+<span class="fc" id="L196">                return result;</span>
             }
                 
-<span class="fc bfc" id="L189" title="All 2 branches covered.">            if(params.length==2){</span>
-<span class="fc bfc" id="L190" title="All 2 branches covered.">                if(token.equals(&quot;remove&quot;)){</span>
-<span class="fc" id="L191">                    String sifra = params[1];</span>
-<span class="fc bfc" id="L192" title="All 2 branches covered.">                    if(!sifra.matches(&quot;[0-9]+&quot;)){</span>
-<span class="fc" id="L193">                        return &quot;Invalid input data.&quot;;</span>
-                    }
-<span class="fc" id="L195">                    Studenti temp = dv.remove(new Studenti(&quot;&quot;, &quot;&quot;, sifra, 0));</span>
-<span class="pc bpc" id="L196" title="1 of 2 branches missed.">                    if(temp!=null){</span>
-<span class="fc" id="L197">                        return &quot;OK&quot;;</span>
-                    }
-<span class="nc" id="L199">                }</span>
-<span class="fc bfc" id="L200" title="All 2 branches covered.">                else if(token.equals(&quot;search&quot;)){</span>
+<span class="fc bfc" id="L199" title="All 2 branches covered.">            if(params.length==2){</span>
+<span class="fc bfc" id="L200" title="All 2 branches covered.">                if(token.equals(&quot;remove&quot;)){</span>
 <span class="fc" id="L201">                    String sifra = params[1];</span>
 <span class="fc bfc" id="L202" title="All 2 branches covered.">                    if(!sifra.matches(&quot;[0-9]+&quot;)){</span>
 <span class="fc" id="L203">                        return &quot;Invalid input data.&quot;;</span>
                     }
-<span class="fc" id="L205">                    Studenti temp = dv.search(new Studenti(&quot;&quot;, &quot;&quot;, sifra, 0));</span>
-<span class="fc bfc" id="L206" title="All 2 branches covered.">                    if(temp!=null){</span>
-<span class="fc" id="L207">                        return temp.toString();</span>
+<span class="fc" id="L205">                    Studenti temp = dv.remove(new Studenti(&quot;&quot;, &quot;&quot;, sifra, 0));</span>
+<span class="pc bpc" id="L206" title="1 of 2 branches missed.">                    if(temp!=null){</span>
+<span class="fc" id="L207">                        return &quot;OK&quot;;</span>
+                    }
+<span class="nc" id="L209">                }</span>
+<span class="fc bfc" id="L210" title="All 2 branches covered.">                else if(token.equals(&quot;search&quot;)){</span>
+<span class="fc" id="L211">                    String sifra = params[1];</span>
+<span class="fc bfc" id="L212" title="All 2 branches covered.">                    if(!sifra.matches(&quot;[0-9]+&quot;)){</span>
+<span class="fc" id="L213">                        return &quot;Invalid input data.&quot;;</span>
+                    }
+<span class="fc" id="L215">                    Studenti temp = dv.search(new Studenti(&quot;&quot;, &quot;&quot;, sifra, 0));</span>
+<span class="fc bfc" id="L216" title="All 2 branches covered.">                    if(temp!=null){</span>
+<span class="fc" id="L217">                        return temp.toString();</span>
                     }
                     else{
-<span class="fc" id="L210">                        return &quot;Student does not exist.&quot;;</span>
+<span class="fc" id="L220">                        return &quot;Student does not exist.&quot;;</span>
                     }
                 }
-<span class="fc bfc" id="L213" title="All 2 branches covered.">                else if(token.equals(&quot;save&quot;)){</span>
-<span class="fc" id="L214">                    String filename=params[1];</span>
-<span class="fc" id="L215">                    dv.save(new FileOutputStream(new File(filename)));</span>
-<span class="fc" id="L216">                    return &quot;OK&quot;;</span>
+<span class="fc bfc" id="L223" title="All 2 branches covered.">                else if(token.equals(&quot;save&quot;)){</span>
+<span class="fc" id="L224">                    String filename=params[1];</span>
+<span class="fc" id="L225">                    dv.save(new FileOutputStream(new File(filename)));</span>
+<span class="fc" id="L226">                    return &quot;OK&quot;;</span>
                 }
-<span class="pc bpc" id="L218" title="1 of 2 branches missed.">                else if(token.equals(&quot;restore&quot;)){</span>
-<span class="fc" id="L219">                    String filename=params[1];</span>
-<span class="fc" id="L220">                    dv.restore(new FileInputStream(new File(filename)));</span>
-<span class="fc" id="L221">                    return &quot;OK&quot;;</span>
+<span class="pc bpc" id="L228" title="1 of 2 branches missed.">                else if(token.equals(&quot;restore&quot;)){</span>
+<span class="fc" id="L229">                    String filename=params[1];</span>
+<span class="fc" id="L230">                    dv.restore(new FileInputStream(new File(filename)));</span>
+<span class="fc" id="L231">                    return &quot;OK&quot;;</span>
 
                 }
-<span class="pc bpc" id="L224" title="1 of 2 branches missed.">            }if(params.length==1){</span>
-<span class="pc bpc" id="L225" title="1 of 2 branches missed.">            if (token.equals(&quot;add&quot;)){</span>
-<span class="nc" id="L226">                Studenti curStudent = promptUserToAdd();</span>
-<span class="nc bnc" id="L227" title="All 2 branches missed.">                if(curStudent==null){</span>
-<span class="nc" id="L228">                    return &quot;Invalid input data&quot;;</span>
+                else{
+<span class="nc" id="L235">                    result = &quot;Invalid command.&quot;;</span>
                 }
-<span class="nc bnc" id="L230" title="All 2 branches missed.">                if(!dv.exists(curStudent)){</span>
-<span class="nc" id="L231">                    dv.add(curStudent);</span>
-<span class="nc" id="L232">                    result = &quot;OK&quot;;</span>
+<span class="pc bpc" id="L237" title="1 of 2 branches missed.">            }if(params.length==1){</span>
+<span class="pc bpc" id="L238" title="1 of 2 branches missed.">            if (token.equals(&quot;add&quot;)){</span>
+<span class="nc" id="L239">                Studenti curStudent = promptUserToAdd();</span>
+<span class="nc bnc" id="L240" title="All 2 branches missed.">                if(curStudent==null){</span>
+<span class="nc" id="L241">                    return &quot;Invalid input data&quot;;</span>
+                }
+<span class="nc bnc" id="L243" title="All 2 branches missed.">                if(!dv.exists(curStudent)){</span>
+<span class="nc" id="L244">                    dv.add(curStudent);</span>
+<span class="nc" id="L245">                    result = &quot;OK&quot;;</span>
                 }
                 else{
-<span class="nc" id="L235">                    result = &quot;Student already exists.&quot;;</span>
+<span class="nc" id="L248">                    result = &quot;Student already exists.&quot;;</span>
                 }
-<span class="nc" id="L237">            }</span>
-<span class="pc bpc" id="L238" title="1 of 2 branches missed.">            else if(token.equals(&quot;remove&quot;)){</span>
-<span class="nc" id="L239">                result = promptUserToDelete();</span>
+<span class="nc" id="L250">            }</span>
+<span class="pc bpc" id="L251" title="1 of 2 branches missed.">            else if(token.equals(&quot;remove&quot;)){</span>
+<span class="nc" id="L252">                result = promptUserToDelete();</span>
                 
-<span class="nc bnc" id="L241" title="All 2 branches missed.">                if(result==null){</span>
-<span class="nc" id="L242">                    return &quot;Student does not exist.&quot;;</span>
+<span class="nc bnc" id="L254" title="All 2 branches missed.">                if(result==null){</span>
+<span class="nc" id="L255">                    return &quot;Student does not exist.&quot;;</span>
                 }
-<span class="nc bnc" id="L244" title="All 2 branches missed.">                if(result.equals(&quot;Invalid input data.&quot;)){</span>
-<span class="nc" id="L245">                    return &quot;Invalid input data.&quot;;</span>
+<span class="nc bnc" id="L257" title="All 2 branches missed.">                if(result.equals(&quot;Invalid input data.&quot;)){</span>
+<span class="nc" id="L258">                    return &quot;Invalid input data.&quot;;</span>
                 }
-<span class="nc bnc" id="L247" title="All 2 branches missed.">                if(result != null){</span>
-<span class="nc" id="L248">                    return &quot;OK&quot;;</span>
-                }
-            }
-<span class="pc bpc" id="L251" title="1 of 2 branches missed.">            else if(token.equals(&quot;search&quot;)){</span>
-<span class="nc" id="L252">                result = promptUserToSearch();</span>
-<span class="nc bnc" id="L253" title="All 2 branches missed.">                if(result==null){</span>
-<span class="nc" id="L254">                    return &quot;Student does not exist.&quot;;</span>
-                }
-<span class="nc bnc" id="L256" title="All 2 branches missed.">                if(result.equals(&quot;Invalid input data.&quot;)){</span>
-<span class="nc" id="L257">                    return &quot;Invalid input data.&quot;;</span>
+<span class="nc bnc" id="L260" title="All 2 branches missed.">                if(result != null){</span>
+<span class="nc" id="L261">                    return &quot;OK&quot;;</span>
                 }
             }
-<span class="pc bpc" id="L260" title="1 of 2 branches missed.">            else if(token.equals(&quot;print&quot;)){</span>
-<span class="nc" id="L261">                return assemblePrint();</span>
-            }
-<span class="pc bpc" id="L263" title="1 of 2 branches missed.">            else if(token.equals(&quot;count&quot;)){</span>
-<span class="nc" id="L264">                int size = dv.size();</span>
-<span class="nc" id="L265">                return &quot;&gt;&gt; No. of students: &quot;+size;</span>
-            }
-<span class="pc bpc" id="L267" title="1 of 2 branches missed.">            else if(token.equals(&quot;reset&quot;)){</span>
-<span class="nc" id="L268">                promptUserReset();</span>
-<span class="nc bnc" id="L269" title="All 2 branches missed.">                if(result==null){</span>
+<span class="pc bpc" id="L264" title="1 of 2 branches missed.">            else if(token.equals(&quot;search&quot;)){</span>
+<span class="nc" id="L265">                result = promptUserToSearch();</span>
+<span class="nc bnc" id="L266" title="All 2 branches missed.">                if(result==null){</span>
+<span class="nc" id="L267">                    return &quot;Student does not exist.&quot;;</span>
+                }
+<span class="nc bnc" id="L269" title="All 2 branches missed.">                if(result.equals(&quot;Invalid input data.&quot;)){</span>
 <span class="nc" id="L270">                    return &quot;Invalid input data.&quot;;</span>
                 }
-<span class="nc" id="L272">                result = &quot;OK&quot;;</span>
+            }
+<span class="pc bpc" id="L273" title="1 of 2 branches missed.">            else if(token.equals(&quot;print&quot;)){</span>
+<span class="nc" id="L274">                return assemblePrint();</span>
+            }
+<span class="pc bpc" id="L276" title="1 of 2 branches missed.">            else if(token.equals(&quot;count&quot;)){</span>
+<span class="nc" id="L277">                int size = dv.size();</span>
+<span class="nc" id="L278">                return &quot;&gt;&gt; No. of students: &quot;+size;</span>
+            }
+<span class="pc bpc" id="L280" title="1 of 2 branches missed.">            else if(token.equals(&quot;reset&quot;)){</span>
+<span class="nc" id="L281">                promptUserReset();</span>
+<span class="nc bnc" id="L282" title="All 2 branches missed.">                if(result==null){</span>
+<span class="nc" id="L283">                    return &quot;Invalid input data.&quot;;</span>
+                }
+<span class="nc" id="L285">                result = &quot;OK&quot;;</span>
             }
                 else{
-<span class="fc" id="L275">                    result = &quot;Invalid command.&quot;;</span>
+<span class="fc" id="L288">                    result = &quot;Invalid command.&quot;;</span>
                 }
             }
             
                 
 
-<span class="nc" id="L281">        } catch (UnsupportedOperationException e) {</span>
-<span class="nc" id="L282">            result = &quot;Error: Operation not supported&quot;;</span>
-<span class="fc" id="L283">        } catch (IllegalArgumentException e) {</span>
-<span class="fc" id="L284">            result = &quot;Error: Student does not exist&quot;;</span>
-<span class="nc" id="L285">        } catch (java.util.NoSuchElementException e) {</span>
-<span class="nc" id="L286">            result = &quot;Error: structure is empty&quot;;</span>
-<span class="nc" id="L287">        }   catch (OutOfMemoryError e) {</span>
-<span class="nc" id="L288">            return memoryError;</span>
+<span class="fc" id="L294">        } catch (UnsupportedOperationException e) {</span>
+<span class="fc" id="L295">            result = &quot;Error: Operation not supported&quot;;</span>
+<span class="fc" id="L296">        } catch (IllegalArgumentException e) {</span>
+<span class="fc" id="L297">            result = &quot;Error: Student does not exist&quot;;</span>
+<span class="fc" id="L298">        } catch (java.util.NoSuchElementException e) {</span>
+<span class="fc" id="L299">            result = &quot;Error: Structure is empty&quot;;</span>
+<span class="nc" id="L300">        }   catch (OutOfMemoryError e) {</span>
+<span class="nc" id="L301">            return memoryError;</span>
         }
-<span class="nc" id="L290">        catch (ClassNotFoundException e) {</span>
-<span class="nc" id="L291">            System.out.println(&quot;I/O Error:&quot;+e.toString());</span>
-<span class="nc" id="L292">        }catch (IOException e) {</span>
-<span class="nc" id="L293">            System.out.println(e.toString());</span>
-<span class="pc" id="L294">        }</span>
+<span class="fc" id="L303">        catch (ClassNotFoundException e) {</span>
+<span class="fc" id="L304">            result =(&quot;I/O Error: &quot;+e.toString());</span>
+<span class="nc" id="L305">        }catch (IOException e) {</span>
+<span class="nc" id="L306">            result =(e.toString());</span>
+<span class="fc" id="L307">        }</span>
 
-<span class="fc" id="L296">        return result;</span>
+<span class="fc" id="L309">        return result;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

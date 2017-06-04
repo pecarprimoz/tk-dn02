@@ -6,7 +6,9 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
+import javax.management.OperationsException;
 
  
 /*
@@ -140,7 +142,15 @@ public class Drevo23<Tip> implements Seznam<Tip>,java.io.Serializable{
         parseArgumentsToTree(ss);
         
     }
-
+    public void mockAdd(Tip e){
+        throw new UnsupportedOperationException("Error: Operation not supported");
+    }
+    public void mockNoElement(Tip e){
+        throw new NoSuchElementException("");
+    }
+    public void mockIoEx(Tip e) throws ClassNotFoundException{
+        throw new ClassNotFoundException("Im a mock!");
+    }
 
     
     public void addUpper(Tip e){

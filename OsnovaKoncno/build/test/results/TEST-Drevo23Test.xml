@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="neon" name="Drevo23Test" skipped="0" tests="84" time="0.343" timestamp="2017-06-04T13:21:36">
+<testsuite errors="0" failures="0" hostname="neon" name="Drevo23Test" skipped="0" tests="84" time="0.343" timestamp="2017-06-04T13:44:54">
   <properties>
     <property name="netbeans.autoupdate.country" value="US" />
     <property name="javac.test.classpath" value=":build/classes:C:\Program Files\NetBeans 8.2\platform\modules\ext\junit-4.12.jar:C:\Program Files\NetBeans 8.2\platform\modules\ext\hamcrest-core-1.3.jar" />
@@ -38,7 +38,7 @@
     <property name="user.name" value="neonpc" />
     <property name="copylibs.rebase" value="true" />
     <property name="libs.swing-layout.maven-pom" value="" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner Drevo23Test skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Users\neonpc\Desktop\tk_last\tk-dn02\OsnovaKoncno\build\test\results\TEST-Drevo23Test.xml crashfile=C:\Users\neonpc\Desktop\tk_last\tk-dn02\OsnovaKoncno\build\junitvmwatcher7362310419730494315.properties propsfile=C:\Users\neonpc\Desktop\tk_last\tk-dn02\OsnovaKoncno\build\junit9204412575685259791.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner Drevo23Test skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Users\neonpc\Desktop\tk_last\tk-dn02\OsnovaKoncno\build\test\results\TEST-Drevo23Test.xml crashfile=C:\Users\neonpc\Desktop\tk_last\tk-dn02\OsnovaKoncno\build\junitvmwatcher8887819073529813812.properties propsfile=C:\Users\neonpc\Desktop\tk_last\tk-dn02\OsnovaKoncno\build\junit2321779995561974323.properties" />
     <property name="build.classes.dir" value="build/classes" />
     <property name="netbeans.accept_license_class" value="org.netbeans.license.AcceptLicense" />
     <property name="jnlp.descriptor" value="application" />
@@ -300,7 +300,7 @@
     <property name="libs.CopyLibs.classpath" value="C:\Program Files\NetBeans 8.2\java\ant\extra\org-netbeans-modules-java-j2seproject-copylibstask.jar" />
     <property name="libs.spring-framework300.classpath" value="C:\Program Files\NetBeans 8.2\ide\modules\org-apache-commons-logging.jar;C:\Program Files\NetBeans 8.2\java\modules\ext\cglib-2.2.jar;C:\Program Files\NetBeans 8.2\java\modules\ext\spring-3.0\spring-aop-3.2.7.RELEASE.jar;C:\Program Files\NetBeans 8.2\java\modules\ext\spring-3.0\spring-aspects-3.2.7.RELEASE.jar;C:\Program Files\NetBeans 8.2\java\modules\ext\spring-3.0\spring-beans-3.2.7.RELEASE.jar;C:\Program Files\NetBeans 8.2\java\modules\ext\spring-3.0\spring-build-src-3.2.7.RELEASE.jar;C:\Program Files\NetBeans 8.2\java\modules\ext\spring-3.0\spring-context-3.2.7.RELEASE.jar;C:\Program Files\NetBeans 8.2\java\modules\ext\spring-3.0\spring-context-support-3.2.7.RELEASE.jar;C:\Program Files\NetBeans 8.2\java\modules\ext\spring-3.0\spring-core-3.2.7.RELEASE.jar;C:\Program Files\NetBeans 8.2\java\modules\ext\spring-3.0\spring-expression-3.2.7.RELEASE.jar;C:\Program Files\NetBeans 8.2\java\modules\ext\spring-3.0\spring-framework-bom-3.2.7.RELEASE.jar;C:\Program Files\NetBeans 8.2\java\modules\ext\spring-3.0\spring-instrument-3.2.7.RELEASE.jar;C:\Program Files\NetBeans 8.2\java\modules\ext\spring-3.0\spring-instrument-tomcat-3.2.7.RELEASE.jar;C:\Program Files\NetBeans 8.2\java\modules\ext\spring-3.0\spring-jdbc-3.2.7.RELEASE.jar;C:\Program Files\NetBeans 8.2\java\modules\ext\spring-3.0\spring-jms-3.2.7.RELEASE.jar;C:\Program Files\NetBeans 8.2\java\modules\ext\spring-3.0\spring-orm-3.2.7.RELEASE.jar;C:\Program Files\NetBeans 8.2\java\modules\ext\spring-3.0\spring-oxm-3.2.7.RELEASE.jar;C:\Program Files\NetBeans 8.2\java\modules\ext\spring-3.0\spring-struts-3.2.7.RELEASE.jar;C:\Program Files\NetBeans 8.2\java\modules\ext\spring-3.0\spring-test-3.2.7.RELEASE.jar;C:\Program Files\NetBeans 8.2\java\modules\ext\spring-3.0\spring-tx-3.2.7.RELEASE.jar;C:\Program Files\NetBeans 8.2\java\modules\ext\spring-3.0\spring-web-3.2.7.RELEASE.jar;C:\Program Files\NetBeans 8.2\java\modules\ext\spring-3.0\spring-webmvc-3.2.7.RELEASE.jar;C:\Program Files\NetBeans 8.2\java\modules\ext\spring-3.0\spring-webmvc-portlet-3.2.7.RELEASE.jar" />
     <property name="libs.hamcrest.src" value="" />
-    <property name="run.jvmargs" value="-XX:-UseSplitVerifier  -Xmx4m  -javaagent:&quot;C:\Users\neonpc\AppData\Roaming\NetBeans\8.2\modules\ext\jacocoagent.jar&quot;=includes=*,destfile=&quot;C:\Users\neonpc\Desktop\tk_last\tk-dn02\OsnovaKoncno\jacoco.exec-25463864293352&quot;" />
+    <property name="run.jvmargs" value="-XX:-UseSplitVerifier  -Xmx4m  -javaagent:&quot;C:\Users\neonpc\AppData\Roaming\NetBeans\8.2\modules\ext\jacocoagent.jar&quot;=includes=*,destfile=&quot;C:\Users\neonpc\Desktop\tk_last\tk-dn02\OsnovaKoncno\jacoco.exec-26862217574947&quot;" />
     <property name="libs.hibernate4-persistence.classpath" value="C:\Program Files\NetBeans 8.2\java\modules\ext\hibernate4\antlr-2.7.7.jar;C:\Program Files\NetBeans 8.2\java\modules\ext\hibernate4\c3p0-0.9.2.1.jar;C:\Program Files\NetBeans 8.2\java\modules\ext\hibernate4\hibernate-c3p0-4.3.1.Final.jar;C:\Program Files\NetBeans 8.2\java\modules\ext\hibernate4\mchange-commons-java-0.2.3.4.jar;C:\Program Files\NetBeans 8.2\java\modules\ext\hibernate4\dom4j-1.6.1.jar;C:\Program Files\NetBeans 8.2\java\modules\ext\hibernate4\ehcache-core-2.4.3.jar;C:\Program Files\NetBeans 8.2\java\modules\ext\hibernate4\hibernate-ehcache-4.3.1.Final.jar;C:\Program Files\NetBeans 8.2\java\modules\ext\hibernate4\hibernate-core-4.3.1.Final.jar;C:\Program Files\NetBeans 8.2\java\modules\ext\hibernate4\jboss-logging-3.1.3.GA.jar;C:\Program Files\NetBeans 8.2\java\modules\ext\hibernate4\hibernate-commons-annotations-4.0.4.Final.jar;C:\Program Files\NetBeans 8.2\java\modules\ext\hibernate4\hibernate-entitymanager-4.3.1.Final.jar;C:\Program Files\NetBeans 8.2\java\modules\ext\hibernate4\javassist-3.18.1-GA.jar;C:\Program Files\NetBeans 8.2\java\modules\ext\hibernate4\jboss-transaction-api_1.2_spec-1.0.0.Final.jar;C:\Program Files\NetBeans 8.2\java\modules\ext\hibernate4\slf4j-api-1.6.1.jar;C:\Program Files\NetBeans 8.2\java\modules\ext\hibernate4\slf4j-simple-1.6.1.jar;C:\Program Files\NetBeans 8.2\java\modules\ext\hibernate4\hibernate-jpa-2.1-api-1.0.0.Final.jar" />
     <property name="libs.JAXB-ENDORSED.src" value="" />
     <property name="libs.testng.javadoc" value="C:\Program Files\NetBeans 8.2\platform\docs\testng-6.8.1-javadoc.zip" />
@@ -321,90 +321,90 @@
     <property name="platform.active" value="default_platform" />
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit" />
   </properties>
-  <testcase classname="Drevo23Test" name="elementAlreadyIn23" time="0.011" />
+  <testcase classname="Drevo23Test" name="elementAlreadyIn23" time="0.005" />
   <testcase classname="Drevo23Test" name="testIsntEmptyTrue" time="0.0" />
-  <testcase classname="Drevo23Test" name="testInNoneTreeSize" time="0.0" />
+  <testcase classname="Drevo23Test" name="testInNoneTreeSize" time="0.001" />
   <testcase classname="Drevo23Test" name="testExistsTrueThree" time="0.0" />
   <testcase classname="Drevo23Test" name="testAlotElemsRightisMid" time="0.001" />
   <testcase classname="Drevo23Test" name="testNoGetFirst" time="0.0" />
-  <testcase classname="Drevo23Test" name="testSeachStudentByName" time="0.003" />
+  <testcase classname="Drevo23Test" name="testSeachStudentByName" time="0.002" />
   <testcase classname="Drevo23Test" name="testSearchMid" time="0.001" />
   <testcase classname="Drevo23Test" name="testDepthBigTree" time="0.0" />
   <testcase classname="Drevo23Test" name="testGetFirst" time="0.001" />
-  <testcase classname="Drevo23Test" name="testSaveMultipleStudents" time="0.003" />
+  <testcase classname="Drevo23Test" name="testSaveMultipleStudents" time="0.007" />
   <testcase classname="Drevo23Test" name="testRemoveFromBiggerTreeLeft" time="0.0" />
-  <testcase classname="Drevo23Test" name="testDepthSmallerTree" time="0.001" />
-  <testcase classname="Drevo23Test" name="testSplitRightMediRight" time="0.001" />
-  <testcase classname="Drevo23Test" name="testSearchLeft" time="0.0" />
-  <testcase classname="Drevo23Test" name="testSearchNone" time="0.002" />
+  <testcase classname="Drevo23Test" name="testDepthSmallerTree" time="0.0" />
+  <testcase classname="Drevo23Test" name="testSplitRightMediRight" time="0.0" />
+  <testcase classname="Drevo23Test" name="testSearchLeft" time="0.002" />
+  <testcase classname="Drevo23Test" name="testSearchNone" time="0.001" />
   <testcase classname="Drevo23Test" name="testRemoveFirstNoElems" time="0.0" />
   <testcase classname="Drevo23Test" name="testSplitSpecialLeftRightisMedi" time="0.0" />
   <testcase classname="Drevo23Test" name="addOne23" time="0.001" />
-  <testcase classname="Drevo23Test" name="testSearchRight" time="0.0" />
+  <testcase classname="Drevo23Test" name="testSearchRight" time="0.001" />
   <testcase classname="Drevo23Test" name="testReset" time="0.0" />
-  <testcase classname="Drevo23Test" name="testSplitSpecialLeftLeftisMedi" time="0.0" />
+  <testcase classname="Drevo23Test" name="testSplitSpecialLeftLeftisMedi" time="0.001" />
   <testcase classname="Drevo23Test" name="testSplitSpecialRight" time="0.001" />
   <testcase classname="Drevo23Test" name="testIsEmptyTrue" time="0.0" />
-  <testcase classname="Drevo23Test" name="testDoesExistDTwoLeftMoreFix" time="0.001" />
-  <testcase classname="Drevo23Test" name="testDepthNoChildrenTree" time="0.001" />
+  <testcase classname="Drevo23Test" name="testDoesExistDTwoLeftMoreFix" time="0.0" />
+  <testcase classname="Drevo23Test" name="testDepthNoChildrenTree" time="0.0" />
   <testcase classname="Drevo23Test" name="init23Tree" time="0.0" />
   <testcase classname="Drevo23Test" name="testInSmallTreeSize" time="0.0" />
   <testcase classname="Drevo23Test" name="testAddStudent" time="0.0" />
   <testcase classname="Drevo23Test" name="removeMultipleElems" time="0.0" />
-  <testcase classname="Drevo23Test" name="testBigTreeMiddleE" time="0.001" />
+  <testcase classname="Drevo23Test" name="testBigTreeMiddleE" time="0.0" />
   <testcase classname="Drevo23Test" name="testDoesExistDTwoLeftMore" time="0.0" />
-  <testcase classname="Drevo23Test" name="addTwoLeft23" time="0.001" />
+  <testcase classname="Drevo23Test" name="addTwoLeft23" time="0.0" />
   <testcase classname="Drevo23Test" name="testDoesExistDTwoRightMore" time="0.0" />
-  <testcase classname="Drevo23Test" name="testRemoveFromBigTree" time="0.0" />
-  <testcase classname="Drevo23Test" name="removeisNull" time="0.0" />
+  <testcase classname="Drevo23Test" name="testRemoveFromBigTree" time="0.001" />
+  <testcase classname="Drevo23Test" name="removeisNull" time="0.001" />
   <testcase classname="Drevo23Test" name="testExistsTrueOne" time="0.001" />
   <testcase classname="Drevo23Test" name="testExistsTrueTwo" time="0.001" />
-  <testcase classname="Drevo23Test" name="testDoesExistDTwoRight" time="0.0" />
+  <testcase classname="Drevo23Test" name="testDoesExistDTwoRight" time="0.002" />
   <testcase classname="Drevo23Test" name="testInTreeRightBigExist" time="0.0" />
-  <testcase classname="Drevo23Test" name="testDoesExistDOneRight" time="0.0" />
-  <testcase classname="Drevo23Test" name="testSplitSpecialRightLeftisMedi" time="0.0" />
+  <testcase classname="Drevo23Test" name="testDoesExistDOneRight" time="0.001" />
+  <testcase classname="Drevo23Test" name="testSplitSpecialRightLeftisMedi" time="0.002" />
   <testcase classname="Drevo23Test" name="addFourRight" time="0.001" />
-  <testcase classname="Drevo23Test" name="addThreeRight231" time="0.001" />
+  <testcase classname="Drevo23Test" name="addThreeRight231" time="0.0" />
   <testcase classname="Drevo23Test" name="testInBigTwoTreeSize" time="0.0" />
   <testcase classname="Drevo23Test" name="testNotIntreeExist" time="0.0" />
   <testcase classname="Drevo23Test" name="testDoesNotExistRemove" time="0.0" />
   <testcase classname="Drevo23Test" name="testPrintForCoco" time="0.0" />
-  <testcase classname="Drevo23Test" name="addThreeLeft123" time="0.001" />
+  <testcase classname="Drevo23Test" name="addThreeLeft123" time="0.0" />
   <testcase classname="Drevo23Test" name="addThreeLeft234" time="0.0" />
   <testcase classname="Drevo23Test" name="testAddElemNewDepth" time="0.0" />
-  <testcase classname="Drevo23Test" name="testAddElemDepth" time="0.0" />
-  <testcase classname="Drevo23Test" name="testInBigTreeSize" time="0.0" />
-  <testcase classname="Drevo23Test" name="testRestore" time="0.006" />
-  <testcase classname="Drevo23Test" name="testRemoveFirstBigTree" time="0.001" />
+  <testcase classname="Drevo23Test" name="testAddElemDepth" time="0.001" />
+  <testcase classname="Drevo23Test" name="testInBigTreeSize" time="0.001" />
+  <testcase classname="Drevo23Test" name="testRestore" time="0.005" />
+  <testcase classname="Drevo23Test" name="testRemoveFirstBigTree" time="0.0" />
   <testcase classname="Drevo23Test" name="testAsListEmpty" time="0.001" />
-  <testcase classname="Drevo23Test" name="testAlotElemsLeftisMid" time="0.001" />
+  <testcase classname="Drevo23Test" name="testAlotElemsLeftisMid" time="0.0" />
   <testcase classname="Drevo23Test" name="testDoesExistDTwoRightMoreFix" time="0.0" />
   <testcase classname="Drevo23Test" name="testSplitRightMediLeft" time="0.0" />
   <testcase classname="Drevo23Test" name="testDepthTinyTree" time="0.001" />
   <testcase classname="Drevo23Test" name="testDsntExist" time="0.0" />
-  <testcase classname="Drevo23Test" name="testDoesExistDOneLeft" time="0.045" />
+  <testcase classname="Drevo23Test" name="testDoesExistDOneLeft" time="0.0" />
   <testcase classname="Drevo23Test" name="testSeachStudentByIDMultiple" time="0.0" />
-  <testcase classname="Drevo23Test" name="testGetFirstMiddle" time="0.001" />
-  <testcase classname="Drevo23Test" name="testRemoveFromBiggerTree" time="0.0" />
-  <testcase classname="Drevo23Test" name="asListMiddle" time="0.0" />
-  <testcase classname="Drevo23Test" name="testInOneTreeSize" time="0.001" />
+  <testcase classname="Drevo23Test" name="testGetFirstMiddle" time="0.0" />
+  <testcase classname="Drevo23Test" name="testRemoveFromBiggerTree" time="0.001" />
+  <testcase classname="Drevo23Test" name="asListMiddle" time="0.001" />
+  <testcase classname="Drevo23Test" name="testInOneTreeSize" time="0.0" />
   <testcase classname="Drevo23Test" name="addTwoRight23" time="0.0" />
   <testcase classname="Drevo23Test" name="asListUpper" time="0.0" />
-  <testcase classname="Drevo23Test" name="testDoesExistDTwoLeft" time="0.0" />
+  <testcase classname="Drevo23Test" name="testDoesExistDTwoLeft" time="0.001" />
   <testcase classname="Drevo23Test" name="testAlotElemsEisMid" time="0.0" />
   <testcase classname="Drevo23Test" name="addLeftRight" time="0.0" />
   <testcase classname="Drevo23Test" name="testBigTreeMiddleRight" time="0.0" />
   <testcase classname="Drevo23Test" name="addThreeRight23" time="0.001" />
   <testcase classname="Drevo23Test" name="testNoDepth" time="0.0" />
   <testcase classname="Drevo23Test" name="testBigTreeMiddleLeft" time="0.0" />
-  <testcase classname="Drevo23Test" name="testExistsTrueFour" time="0.001" />
-  <testcase classname="Drevo23Test" name="testSplitSpecialRightEisMedi" time="0.0" />
+  <testcase classname="Drevo23Test" name="testExistsTrueFour" time="0.002" />
+  <testcase classname="Drevo23Test" name="testSplitSpecialRightEisMedi" time="0.001" />
   <testcase classname="Drevo23Test" name="testSeachStudentByID" time="0.001" />
-  <testcase classname="Drevo23Test" name="testSplitSpecialLeftEisMedi" time="0.001" />
+  <testcase classname="Drevo23Test" name="testSplitSpecialLeftEisMedi" time="0.0" />
   <testcase classname="Drevo23Test" name="testAsListBig" time="0.0" />
   <testcase classname="Drevo23Test" name="testSplitSpecialRightRightisMedi" time="0.0" />
   <testcase classname="Drevo23Test" name="testRemoveFirstTwoElems" time="0.0" />
-  <testcase classname="Drevo23Test" name="testRemoveFirstOneElems" time="0.0" />
+  <testcase classname="Drevo23Test" name="testRemoveFirstOneElems" time="0.001" />
   <system-out><![CDATA[63150211 | A, A | 7.7
 63150210 | C, A | 7.7
 63150213 | A, B | 7.3

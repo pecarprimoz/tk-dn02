@@ -129,6 +129,19 @@ public class SeznamiUVTest {
     public void testNothing(){
         assertEquals("Error: enter command", uv.processInput(""));
     }
+    @Test
+    public void addMock(){
+        assertEquals("Error: Operation not supported", uv.processInput("mockAdd"));
+    }
+    @Test
+    public void dsntExistMock(){
+        assertEquals("Error: Structure is empty", uv.processInput("mockNoElement"));
+    }
+    @Test
+    public void mockIoExcp(){
+        assertEquals("I/O Error: java.lang.ClassNotFoundException: Im a mock!", uv.processInput("mockIO"));
+    }
+    
     
     
     

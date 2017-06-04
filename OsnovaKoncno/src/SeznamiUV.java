@@ -166,10 +166,20 @@ public class SeznamiUV {
         if(token.equals("exit")){
             return "Goodbye.";
         }
+        
         try {
-            //Napis se teste za to, FAKING PARAMSE MORS GLEDAT KER JE TAKO ZASTAVLJENA NALOGA
-            //nvm baje so za to sistemski testi
+            if(token.equals("mockAdd")){
+                dv.mockAdd(new Studenti("", "", "", 0));
+            }
+            else if(token.equals("mockNoElement")){
+                dv.mockNoElement(new Studenti("", "", "", 0));
+            }
+            else if(token.equals("mockIO")){
+                dv.mockIoEx(new Studenti("", "", "", 0));
+            }
+            //za osebno testiranje
             if(params.length>3){
+                
                 if(token.equals("add") && params.length==5){
                     Studenti curStudenti = new Studenti(params[2], params[3], params[1], Double.parseDouble(params[4]));
                     if(!dv.exists(curStudenti)){
@@ -220,6 +230,9 @@ public class SeznamiUV {
                     dv.restore(new FileInputStream(new File(filename)));
                     return "OK";
 
+                }
+                else{
+                    result = "Invalid command.";
                 }
             }if(params.length==1){
             if (token.equals("add")){
@@ -283,14 +296,14 @@ public class SeznamiUV {
         } catch (IllegalArgumentException e) {
             result = "Error: Student does not exist";
         } catch (java.util.NoSuchElementException e) {
-            result = "Error: structure is empty";
+            result = "Error: Structure is empty";
         }   catch (OutOfMemoryError e) {
             return memoryError;
         }
         catch (ClassNotFoundException e) {
-            System.out.println("I/O Error:"+e.toString());
+            result =("I/O Error: "+e.toString());
         }catch (IOException e) {
-            System.out.println(e.toString());
+            result =(e.toString());
         }
 
         return result;

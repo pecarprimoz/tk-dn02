@@ -317,7 +317,12 @@ def studenti_Restore():
         baza.expect("command>")
         baza.send("restore moj_janezXXX.bin")
         baza.expect("java.io.FileNotFoundException: moj_janezXXX.bin (The system cannot find the file specified)")
-        baza.expect("OK")
+        
+		
+        baza.expect("command>")
+        baza.send("restore ../../")
+        baza.expect("java.io.FileNotFoundException: ..\.. (Access is denied)")
+        
 
         baza.expect("command>")
         baza.send("restore moj_janez_novo_file")
